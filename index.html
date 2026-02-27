@@ -1,501 +1,944 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="56osqY0LdekBhzUOaIFRu-HVMiGM-nPJJ6lTtRb0f7c" />
-    <title>MD WASI KHAN | Backend Developer</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    
-    <link rel="stylesheet" href="style.css">
-    <link rel="google-site-verification" href="googled09790b93ca20719.html"/>
-    <link rel="icon" type="image/x-icon" href="Image/logo.png">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="google-site-verification"
+      content="56osqY0LdekBhzUOaIFRu-HVMiGM-nPJJ6lTtRb0f7c"
+    />
+    <title>MD ANISUJJAMAN ONTAR | Backend Developer</title>
 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="google-site-verification" href="googled09790b93ca20719.html" />
+    <link rel="icon" type="image/x-icon" href="Image/logo.png" />
+  </head>
+  <body>
     <canvas id="canvas1"></canvas>
 
     <header>
-        <nav class="navbar container">
-            <a href="#home" class="nav-logo">
-                <div class="logo-image">
-                    <img src="Image/Formal_Photo.jpg" alt="Profile">
-                </div>
-                <div class="logo-info">
-                    <span class="logo-name">MD WASI KHAN</span>
-                    <span class="logo-title">Backend Developer</span>
-                </div>
-            </a>
+      <nav class="navbar container">
+        <a href="#home" class="nav-logo">
+          <div class="logo-image">
+            <img src="Image/my-photo.jpg" alt="Profile" />
+          </div>
+          <div class="logo-info">
+            <span class="logo-name">MD ANISUJJAMAN ONTAR</span>
+            <span class="logo-title">Backend Developer</span>
+          </div>
+        </a>
 
-            <div class="nav-menu" id="nav-menu">
-                <ul class="nav-list">
-                    <li><a href="#home" class="nav-link active-link">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#skills" class="nav-link">Skills</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#blogs" class="nav-link">Blogs</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </div>
+        <div class="nav-menu" id="nav-menu">
+          <ul class="nav-list">
+            <li><a href="#home" class="nav-link active-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#blogs" class="nav-link">Blogs</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+        </div>
 
-            <div class="nav-controls">
-    <button id="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
-    <button class="nav-toggle-btn" id="nav-toggle" aria-label="Menu">
-        <i class="fas fa-bars" id="menu-icon"></i>
-        <i class="fas fa-times" id="close-icon"></i>
-    </button>
-</div>
-        </nav>
+        <div class="nav-controls">
+          <button id="theme-toggle" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button class="nav-toggle-btn" id="nav-toggle" aria-label="Menu">
+            <i class="fas fa-bars" id="menu-icon"></i>
+            <i class="fas fa-times" id="close-icon"></i>
+          </button>
+        </div>
+      </nav>
     </header>
 
     <section id="home" class="hero">
-        <div class="container">
-            <div class="glass-container hero-wrapper">
-                <div class="hero-content">
-                    <div class="hero-text">
-    <h3 class="animate-text">Hello, I'm</h3>
-    <div class="typing-wrapper">
-        <h1 id="typing-name" class="typing-text">MD WASI KHAN</h1>
-        <span id="cursor" class="cursor"></span>
-    </div>
-    <h2 class="static-subtitle">AI-focused Backend Developer</h2>
-    
-    <p class="animate-text delay-1">I turn complex system logic into clean, production-ready backend solutions. I specialize in building efficient, scalable services within a Linux ecosystem, delivering high-performance APIs and well-structured relational database architectures.</p>
-    
-    <div class="hero-btns animate-text delay-2">
-        <a href="https://drive.google.com/file/d/1WzUFxH22tPZnXTCFVQC1gkIloefulLg2/view?usp=sharing" target="_blank" class="btn primary-btn"><i class="fas fa-download"></i> Get Resume</a>
-        <a href="#contact" class="btn outline-btn">Hire Me</a>
-        <a href="#projects" class="btn text-btn">View My Works <i class="fas fa-arrow-right"></i></a>
-    </div>
+      <div class="container">
+        <div class="glass-container hero-wrapper">
+          <div class="hero-content">
+            <div class="hero-text">
+              <h3 class="animate-text">Hello, I'm</h3>
 
-    <div class="social-icons animate-text delay-3">
-        <a href="https://github.com/mdwasikhan54" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/mdwasikhan54/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://facebook.com/mdwasikhan.fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://hackerrank.com/profile/wasi_khan" target="_blank"><i class="fab fa-hackerrank"></i></a>
-    </div>
-</div>
-                    
-                    <div class="hero-img animate-img">
-                        <div class="img-border">
-                            <img src="Image/Formal_Photo.jpg" alt="MD WASI KHAN">
-                        </div>
-                        <div class="floating-icon python">
-                            <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python" width="38" height="38">
-                        </div>
-                        <div class="floating-icon db">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <div class="floating-icon linux">
-                            <img src="https://img.icons8.com/color/48/000000/linux.png" alt="Linux" width="38" height="38">
-                        </div>
-                    </div>
-                </div>
+              <div class="typing-wrapper">
+                <h1 id="name" class="typing-text"></h1>
+                <h2 id="title" class="static-subtitle"></h2>
+              </div>
+
+              <p class="animate-text delay-1">
+                I turn complex system logic into clean, production-ready backend
+                solutions. I specialize in building efficient, scalable services
+                within a Linux ecosystem, delivering high-performance APIs and
+                well-structured relational database architectures.
+              </p>
+
+              <div class="hero-btns animate-text delay-2">
+                <a
+                  href="https://drive.google.com/file/d/1WzUFxH22tPZnXTCFVQC1gkIloefulLg2/view?usp=sharing"
+                  target="_blank"
+                  class="btn primary-btn"
+                  ><i class="fas fa-download"></i> Get Resume</a
+                >
+                <a href="#contact" class="btn outline-btn">Hire Me</a>
+                <a href="#projects" class="btn text-btn"
+                  >View My Works <i class="fas fa-arrow-right"></i
+                ></a>
+              </div>
+
+              <div class="social-icons animate-text delay-3">
+                <a href="https://github.com/officialontar" target="_blank"
+                  ><i class="fab fa-github"></i
+                ></a>
+                <a href="https://linkedin.com/in/officalontar" target="_blank"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+                <a href="https://facebook.com/officialontar" target="_blank"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a
+                  href="https://hackerrank.com/profile/officialontar"
+                  target="_blank"
+                  ><i class="fab fa-hackerrank"></i
+                ></a>
+              </div>
             </div>
+
+            <div class="hero-img animate-img">
+              <div class="img-border">
+                <img src="Image/Formal.jpg" alt="MD WASI KHAN" />
+              </div>
+              <div class="floating-icon python">
+                <img
+                  src="https://img.icons8.com/color/48/000000/python.png"
+                  alt="Python"
+                  width="38"
+                  height="38"
+                />
+              </div>
+              <div class="floating-icon Django">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"
+                  alt="Django"
+                  width="38"
+                  height="38"
+                />
+              </div>
+              <div class="floating-icon Linux">
+                <img
+                  src="https://img.icons8.com/color/48/000000/linux.png"
+                  alt="Linux"
+                />
+              </div>
+              <div class="floating-icon JavaScript">
+                <img
+                  src="https://img.icons8.com/color/48/javascript.png"
+                  alt="JavaScript"
+                  width="38"
+                  height="38"
+                />
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <section id="about" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>About <span>Me</span></h2>
-                <div class="header-bar"></div>
-            </div>
-            
-            <div class="glass-container">
-                <div class="about-bento-grid">
-                    <div class="about-left">
-                        <div class="bio-box">
-                            <h3><i class="fas fa-user-circle"></i> Who I Am</h3>
-                            <p class="about-desc">
-                                I am a <strong>AI-focused Backend Developer</strong> with a strong problem-solving mindset and a passion for building reliable, scalable systems. I have experience designing secure RESTful APIs and structuring efficient relational database schemas to support real-world application workflows. <br> <br>
-
-                                I value clean, maintainable code and focus on writing backend logic that remains readable, stable, and easy to extend over time. I enjoy working in collaborative engineering environments where thoughtful design, code quality, and continuous improvement play an important role.
-                            </p>
-                        </div>
-
-                        <div class="cert-box">
-                            <h3><i class="fas fa-medal"></i> Certifications</h3>
-                            <div class="cert-items">
-                                <a href="https://hackerrank.com/profile/wasi_khan" target="_blank" class="cert-badge gold-badge">
-                                    <i class="fas fa-award"></i> 5-Star Gold Badge (Python, C++, C)
-                                </a>
-                                <a href="https://www.hackerrank.com/certificates/c1123843b16b" target="_blank" class="cert-badge silver-badge">
-                                    <span class="cert-icon">
-                                        <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python" loading="lazy">
-                                    </span>
-                                    Python (Basic) Certificate
-                                </a>
-                                <a href="https://www.hackerrank.com/certificates/865abc9d16da" target="_blank" class="cert-badge bronze-badge">
-                                    <i class="fas fa-brain"></i> Problem Solving (Basic) Certificate
-                                </a>
-                                <a href="https://drive.google.com/file/d/1hMyUFLWJRd4zN__8xh0a-g0tEsNVEkFD/view?usp=sharing" target="_blank" class="cert-badge bronze-badge">
-                                    <span class="cert-icon">
-                                        <img src="https://www.bssnews.net/assets/news_photos/2025/08/06/image-299398-1754492609.jpg" alt="NSDA" loading="lazy">
-                                    </span>
-                                    National Skills Certificate — Web Design & Development (Level 3)
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="about-right">
-                        <div class="edu-box">
-                            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-                            <div class="edu-timeline">
-                                <div class="edu-card">
-                                    <span class="year">2022 - 2026</span>
-                                    <h4>Diploma in Engineering (CST)</h4>
-                                    <small>Brahmanbaria Polytechnic Institute</small>
-                                </div>
-                                <div class="edu-card">
-                                    <span class="year">2019 - 2021</span>
-                                    <h4>Secondary School Certificate (SSC)</h4>
-                                    <small>Kalikaccha Pathshala High School</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="exp-box">
-                            <h3><i class="fas fa-briefcase"></i> Work Experience</h3>
-                            <div class="edu-timeline exp-timeline">
-                                <div class="edu-card">
-                                    <span class="year">January, 2026 - Present</span>
-                                    <h4>Junior Software Engineer (Intern)</h4>
-                                    <small>
-                                        <a class="inline-link" href="https://nafcorp.com.au/" target="_blank" rel="noopener">Nafcorp Technologies</a>
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="soft-skills-box">
-                            <h3><i class="fas fa-lightbulb"></i> Soft Skills</h3>
-                            <div class="skills-cloud">
-                                <span>Problem Solving</span>
-                                <span>Teamwork</span>
-                                <span>Adaptability</span>
-                                <span>Attention to Detail</span>
-                                <span>Troubleshooting</span>
-                                <span>Conflict Resolution</span>
-                                <span>Self-Motivation & Discipline</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2>About <span>Me</span></h2>
+          <div class="header-bar"></div>
         </div>
+
+        <div class="glass-container">
+          <div class="about-bento-grid">
+            <div class="about-left">
+              <div class="bio-box">
+                <h3><i class="fas fa-user-circle"></i> Who I Am</h3>
+                <p class="about-desc">
+                  I am a <strong>AI-focused Backend Developer</strong> with a
+                  strong problem-solving mindset and a passion for building
+                  reliable, scalable systems. I have experience designing secure
+                  RESTful APIs and structuring efficient relational database
+                  schemas to support real-world application workflows. <br />
+                  <br />
+
+                  I value clean, maintainable code and focus on writing backend
+                  logic that remains readable, stable, and easy to extend over
+                  time. I enjoy working in collaborative engineering
+                  environments where thoughtful design, code quality, and
+                  continuous improvement play an important role.
+                </p>
+              </div>
+
+              <div class="cert-box">
+                <h3><i class="fas fa-medal"></i> Certifications</h3>
+                <div class="cert-items">
+                  <a
+                    href="https://hackerrank.com/profile/wasi_khan"
+                    target="_blank"
+                    class="cert-badge gold-badge"
+                  >
+                    <i class="fas fa-award"></i> 5-Star Gold Badge (Python, C++,
+                    C)
+                  </a>
+                  <a
+                    href="https://www.hackerrank.com/certificates/c1123843b16b"
+                    target="_blank"
+                    class="cert-badge silver-badge"
+                  >
+                    <span class="cert-icon">
+                      <img
+                        src="https://img.icons8.com/color/48/000000/python.png"
+                        alt="Python"
+                        loading="lazy"
+                      />
+                    </span>
+                    Python (Basic) Certificate
+                  </a>
+                  <a
+                    href="https://www.hackerrank.com/certificates/865abc9d16da"
+                    target="_blank"
+                    class="cert-badge bronze-badge"
+                  >
+                    <i class="fas fa-brain"></i> Problem Solving (Basic)
+                    Certificate
+                  </a>
+                  <a
+                    href="https://drive.google.com/file/d/1hMyUFLWJRd4zN__8xh0a-g0tEsNVEkFD/view?usp=sharing"
+                    target="_blank"
+                    class="cert-badge bronze-badge"
+                  >
+                    <span class="cert-icon">
+                      <img
+                        src="https://www.bssnews.net/assets/news_photos/2025/08/06/image-299398-1754492609.jpg"
+                        alt="NSDA"
+                        loading="lazy"
+                      />
+                    </span>
+                    National Skills Certificate — Web Design & Development
+                    (Level 3)
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-right">
+              <div class="edu-box">
+                <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                <div class="edu-timeline">
+                  <div class="edu-card">
+                    <span class="year">2023 - 2027</span>
+                    <h4>Computer Science & Engineering (B.Sc. in CSE)</h4>
+                    <small
+                      >National Institute of Science & Technology (NIST)</small
+                    >
+                  </div>
+                  <div class="edu-card">
+                    <span class="year">2020 - 2021</span>
+                    <h4>Higher Secondary Certificate (HSC)</h4>
+                    <small>Bogura YMCA Public School & College</small>
+                  </div>
+                  <div class="edu-card">
+                    <span class="year">2018 - 2019</span>
+                    <h4>Secondary School Certificate (SSC)</h4>
+                    <small>Hat Sherpur High School</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="exp-box">
+                <h3><i class="fas fa-briefcase"></i> Work Experience</h3>
+                <div class="edu-timeline exp-timeline">
+                  <div class="edu-card">
+                    <span class="year">January, 2026 - Present</span>
+                    <h4>Junior Software Engineer (Intern)</h4>
+                    <small>
+                      <a
+                        class="inline-link"
+                        href="https://nafcorp.com.au/"
+                        target="_blank"
+                        rel="noopener"
+                        >Nafcorp Technologies</a
+                      >
+                    </small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="soft-skills-box">
+                <h3><i class="fas fa-lightbulb"></i> Soft Skills</h3>
+                <div class="skills-cloud">
+                  <span>Problem Solving</span>
+                  <span>Teamwork</span>
+                  <span>Adaptability</span>
+                  <span>Attention to Detail</span>
+                  <span>Troubleshooting</span>
+                  <span>Conflict Resolution</span>
+                  <span>Self-Motivation & Discipline</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="skills" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Technical <span>Skills</span></h2>
-                <p>My technical arsenal and tools I work with.</p>
-                <div class="header-bar"></div>
-            </div>
-
-            <div class="glass-container">
-                <div class="skills-grid-layout">
-                    <div class="skill-group">
-                        <h3 class="cat-title">Programming Languages</h3>
-                        <div class="skill-cards">
-                            <div class="skill-card"><img src="https://img.icons8.com/color/48/000000/python.png" alt="Python"><span>Python</span></div>
-                            <div class="skill-card"><i class="devicon-cplusplus-plain colored"></i><span>C++</span></div>
-                            <div class="skill-card"><i class="devicon-c-plain colored"></i><span>C</span></div>
-                            <div class="skill-card"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
-                            <div class="skill-card"><i class="devicon-php-plain colored"></i><span>PHP</span></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <h3 class="cat-title">Web & Frameworks</h3>
-                        <div class="skill-cards">
-                            <div class="skill-card"><i class="devicon-fastapi-plain colored"></i><span>FastAPI</span></div>
-                            <div class="skill-card"><i class="fas fa-network-wired" style="color: #e34c26;"></i><span>RESTful API</span></div>
-                            <div class="skill-card"><i class="fas fa-shield-alt" style="color: #e74c3c;"></i><span>Pydantic</span></div>
-                            <div class="skill-card"><i class="fas fa-key" style="color: #f7df1e;"></i><span>JWT</span></div>
-                            <div class="skill-card"><i class="devicon-html5-plain colored"></i><span>HTML</span></div>
-                            <div class="skill-card"><i class="devicon-css3-plain colored"></i><span>CSS</span></div>
-                            <div class="skill-card"><i class="devicon-bootstrap-plain colored"></i><span>Bootstrap</span></div>
-                            <div class="skill-card"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind CSS</span></div>
-                            <div class="skill-card"><i class="devicon-wordpress-plain colored"></i><span>WordPress</span></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <h3 class="cat-title">Databases & DevOps</h3>
-                        <div class="skill-cards">
-                            <div class="skill-card"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></div>
-                            <div class="skill-card">
-                                <img class="skill-img mysql-logo" src="https://www.vectorlogo.zone/logos/mysql/mysql-icon.svg" alt="MySQL">
-                                <span>MySQL</span>
-                            </div>
-                            <div class="skill-card"><img src="https://img.icons8.com/color/48/000000/linux.png" alt="Linux"><span>Linux</span></div>
-                            <div class="skill-card"><i class="devicon-git-plain colored"></i><span>Git</span></div>
-                            <div class="skill-card"><img src="https://images.ctfassets.net/spoqsaf9291f/external_integrations-github-icon.png/0f9ebc2adf89356d37cde68a0df126d7/external_integrations-github-icon.png" alt="GitHub" style="width: 40px;"><span>GitHub</span></div>
-                            <div class="skill-card"><i class="devicon-gitlab-plain colored"></i><span>GitLab</span></div>
-                            <div class="skill-card"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <h3 class="cat-title">Testing & Editors</h3>
-                        <div class="skill-cards">
-                            <div class="skill-card"><img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="Postman" style="width:30px; margin-bottom:5px;"><span>Postman</span></div>
-                            <div class="skill-card"><i class="devicon-vscode-plain colored"></i><span>VS Code</span></div>
-                            <div class="skill-card"><img src="https://avatars.githubusercontent.com/u/48722593?v=4" alt="Poetry" style="width:50px; margin-bottom:1px;"><span>Poetry</span></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <h3 class="cat-title">Design & Productivity</h3>
-                        <div class="skill-cards">
-                            <div class="skill-card"><i class="devicon-photoshop-plain colored"></i><span>Photoshop</span></div>
-                            <div class="skill-card"><i class="devicon-illustrator-plain colored"></i><span>Illustrator</span></div>
-                            <div class="skill-card"><img src="https://img.icons8.com/color/48/000000/canva.png" alt="Canva"><span>Canva</span></div>
-                            <div class="skill-card"><i class="fas fa-video" style="color: #ff0050;"></i><span>CapCut</span></div>
-                            <div class="skill-card"><img src="https://img.icons8.com/color/48/000000/microsoft-word-2019.png" alt="MS Word"><span>MS Word</span></div>
-                            <div class="skill-card"><img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019.png" alt="MS Excel"><span>MS Excel</span></div>
-                            <div class="skill-card"><img src="https://img.icons8.com/color/48/000000/microsoft-powerpoint-2019.png" alt="MS PowerPoint"><span>MS PowerPoint</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2>Technical <span>Skills</span></h2>
+          <p>My technical arsenal and tools I work with.</p>
+          <div class="header-bar"></div>
         </div>
+
+        <div class="glass-container">
+          <div class="skills-grid-layout">
+            <div class="skill-group">
+              <h3 class="cat-title">Programming Languages</h3>
+              <div class="skill-cards">
+                <div class="skill-card">
+                  <i class="devicon-c-plain colored"></i><span>C</span>
+                </div>
+                <div class="skill-card">
+                  <i class="devicon-cplusplus-plain colored"></i
+                  ><span>C++</span>
+                </div>
+                <div class="skill-card">
+                  <img
+                    src="https://img.icons8.com/color/48/000000/python.png"
+                    alt="Python"
+                  /><span>Python</span>
+                </div>
+
+                <div class="skill-card">
+                  <i class="devicon-javascript-plain colored"></i
+                  ><span>JavaScript</span>
+                </div>
+                <div class="skill-card">
+                  <i class="devicon-java-plain colored"></i><span>Java</span>
+                </div>
+                <div class="skill-card">
+                  <i class="devicon-kotlin-plain colored"></i
+                  ><span>Kotlin</span>
+                </div>
+                <div class="skill-card">
+                  <i class="devicon-php-plain colored"></i><span>PHP</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <h3 class="cat-title">Web & Frameworks</h3>
+              <div class="skill-cards">
+                <div class="skill-card">
+                  <i class="devicon-fastapi-plain colored"></i
+                  ><span>FastAPI</span>
+                </div>
+                <div class="skill-card">
+                  <i class="fas fa-network-wired" style="color: #e34c26"></i
+                  ><span>RESTful API</span>
+                </div>
+                <div class="skill-card">
+                  <i class="fas fa-shield-alt" style="color: #e74c3c"></i
+                  ><span>Pydantic</span>
+                </div>
+                <div class="skill-card">
+                  <i class="fas fa-key" style="color: #f7df1e"></i
+                  ><span>JWT</span>
+                </div>
+                <div class="skill-card">
+                  <i class="devicon-html5-plain colored"></i><span>HTML</span>
+                </div>
+                <div class="skill-card">
+                  <i class="devicon-css3-plain colored"></i><span>CSS</span>
+                </div>
+                <div class="skill-card">
+                  <i class="devicon-bootstrap-plain colored"></i
+                  ><span>Bootstrap</span>
+                </div>
+                <div class="skill-card">
+                  <i class="devicon-tailwindcss-plain colored"></i
+                  ><span>Tailwind CSS</span>
+                </div>
+                <div class="skill-card">
+                  <i class="devicon-django-plain colored"></i
+                  ><span>Django</span>
+                </div>
+                <div class="skill-card">
+                  <i class="devicon-react-plain colored"></i><span>React</span>
+                </div>
+                <div class="skill-card">
+                  <i class="devicon-wordpress-plain colored"></i
+                  ><span>WordPress</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <h3 class="cat-title">Databases & DevOps</h3>
+              <div class="skill-cards">
+                <div class="skill-card">
+                  <i class="devicon-postgresql-plain colored"></i
+                  ><span>PostgreSQL</span>
+                </div>
+                <div class="skill-card">
+                  <img
+                    class="skill-img mysql-logo"
+                    src="https://www.vectorlogo.zone/logos/mysql/mysql-icon.svg"
+                    alt="MySQL"
+                  />
+                  <span>MySQL</span>
+                </div>
+                <div class="skill-card">
+                  <img
+                    src="https://img.icons8.com/color/48/000000/linux.png"
+                    alt="Linux"
+                  /><span>Linux</span>
+                </div>
+                <div class="skill-card">
+                  <i class="devicon-git-plain colored"></i><span>Git</span>
+                </div>
+                <div class="skill-card">
+                  <img
+                    src="https://images.ctfassets.net/spoqsaf9291f/external_integrations-github-icon.png/0f9ebc2adf89356d37cde68a0df126d7/external_integrations-github-icon.png"
+                    alt="GitHub"
+                    style="width: 40px"
+                  /><span>GitHub</span>
+                </div>
+                <div class="skill-card">
+                  <i class="devicon-gitlab-plain colored"></i
+                  ><span>GitLab</span>
+                </div>
+                <div class="skill-card">
+                  <i class="devicon-docker-plain colored"></i
+                  ><span>Docker</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <h3 class="cat-title">Testing & Editors</h3>
+              <div class="skill-cards">
+                <div class="skill-card">
+                  <img
+                    src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg"
+                    alt="Postman"
+                    style="width: 30px; margin-bottom: 5px"
+                  /><span>Postman</span>
+                </div>
+                <div class="skill-card">
+                  <i class="devicon-vscode-plain colored"></i
+                  ><span>VS Code</span>
+                </div>
+                <div class="skill-card">
+                  <img
+                    src="https://avatars.githubusercontent.com/u/48722593?v=4"
+                    alt="Poetry"
+                    style="width: 50px; margin-bottom: 1px"
+                  /><span>Poetry</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <h3 class="cat-title">Design & Productivity</h3>
+              <div class="skill-cards">
+                <div class="skill-card">
+                  <i class="devicon-photoshop-plain colored"></i
+                  ><span>Photoshop</span>
+                </div>
+                <div class="skill-card">
+                  <i class="devicon-illustrator-plain colored"></i
+                  ><span>Illustrator</span>
+                </div>
+                <div class="skill-card">
+                  <img
+                    src="https://img.icons8.com/color/48/000000/canva.png"
+                    alt="Canva"
+                  /><span>Canva</span>
+                </div>
+                <div class="skill-card">
+                  <i class="fas fa-video" style="color: #ff0050"></i
+                  ><span>CapCut</span>
+                </div>
+                <div class="skill-card">
+                  <img
+                    src="https://img.icons8.com/color/48/000000/microsoft-word-2019.png"
+                    alt="MS Word"
+                  /><span>MS Word</span>
+                </div>
+                <div class="skill-card">
+                  <img
+                    src="https://img.icons8.com/color/48/000000/microsoft-excel-2019.png"
+                    alt="MS Excel"
+                  /><span>MS Excel</span>
+                </div>
+                <div class="skill-card">
+                  <img
+                    src="https://img.icons8.com/color/48/000000/microsoft-powerpoint-2019.png"
+                    alt="MS PowerPoint"
+                  /><span>MS PowerPoint</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="projects" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Featured <span>Projects</span></h2>
-                <div class="header-bar"></div>
-            </div>
-
-            <div class="glass-container">
-                <div class="projects-grid">
-                    <div class="project-item">
-                        <div class="project-content">
-                            <div class="folder-icon"><i class="fas fa-server"></i></div>
-                            <h3>Student Management API</h3>
-                            <ul class="project-desc">
-                                <li>Developed a robust RESTful API handling secure User Registration and Login functionalities.</li>
-                                <li>Implemented Pydantic for strict data validation and JWT Authentication for secure access control.</li>
-                                <li>Created custom JSON-based persistence layer to handle CRUD operations.</li>
-                            </ul>
-                            <div class="tech-tags">
-                                <span>Python</span><span>FastAPI</span><span>JWT</span><span>Pydantic</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/mdwasikhan54/Student-Management-System-API" target="_blank" class="read-btn project-read-btn">
-                                    <i class="fab fa-github"></i> View Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-content">
-                            <div class="folder-icon"><i class="fas fa-robot"></i></div>
-                            <h3>AI Chatbot Backend (RAG System)</h3>
-                            <ul class="project-desc">
-                                <li>Built a retrieval-augmented backend to generate accurate, knowledge-grounded responses.</li>
-                                <li>Implemented secure authentication and structured request validation for production-ready APIs.</li>
-                                <li>Designed scalable data storage and efficient retrieval workflows for real-world usage.</li>
-                            </ul>
-                            <div class="tech-tags">
-                                <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>SQLAlchemy</span><span>RAG</span><span>JWT</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/mdwasikhan54/AI-Chatbot-Backend" target="_blank" class="read-btn project-read-btn">
-                                    <i class="fab fa-github"></i> View Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-content">
-                            <div class="folder-icon"><i class="fas fa-database"></i></div>
-                            <h3>Relational DB Schema Design</h3>
-                            <ul class="project-desc">
-                                <li>Architected a normalized Relational Database Schema for a student management system.</li>
-                                <li>Designed Entity-Relationship Diagrams (ERD) to visualize complex relationships.</li>
-                                <li>Wrote optimized SQL scripts for creating tables, constraints, and joins.</li>
-                            </ul>
-                            <div class="tech-tags">
-                                <span>PostgreSQL</span><span>ERD</span><span>SQL</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/mdwasikhan54/Student-DB-Schema" target="_blank" class="read-btn project-read-btn">
-                                    <i class="fab fa-github"></i> View Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-content">
-                            <div class="folder-icon"><i class="fas fa-hospital"></i></div>
-                            <h3>Clinic Management System</h3>
-                            <ul class="project-desc">
-                                <li>Built a desktop GUI application to manage clinic workflows with a clean, interactive interface.</li>
-                                <li>Implemented patient registration, queue handling, and structured record management.</li>
-                                <li>Used local file-based storage to persist data and keep the app lightweight and portable.</li>
-                            </ul>
-                            <div class="tech-tags">
-                                <span>Python</span><span>Tkinter</span><span>GUI</span><span>File Storage</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/mdwasikhan54/Clinic-Management-System" target="_blank" class="read-btn project-read-btn">
-                                    <i class="fab fa-github"></i> View Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-item">
-                        <div class="project-content">
-                            <div class="folder-icon"><i class="fas fa-notes-medical"></i></div>
-                            <h3>MediBook (Serverless Doctor Appointments)</h3>
-                            <ul class="project-desc">
-                                <li>Built a full-stack, serverless appointment system running on the edge for low-latency performance.</li>
-                                <li>Designed a REST API with persistent SQL storage and clean validation-driven request handling.</li>
-                                <li>Implemented a responsive UI with modern interactions and a graceful demo-mode fallback.</li>
-                            </ul>
-                            <div class="tech-tags">
-                                <span>Cloudflare Workers</span><span>Hono</span><span>D1 (SQLite)</span><span>REST API</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/mdwasikhan54/MediBook-App" target="_blank" class="read-btn project-read-btn">
-                                    <i class="fab fa-github"></i> View Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured <span>Projects</span></h2>
+          <div class="header-bar"></div>
         </div>
+
+        <div class="glass-container">
+          <div class="projects-grid">
+            <div class="project-item">
+              <div class="project-content">
+                <div class="folder-icon"><i class="fas fa-server"></i></div>
+                <h3>Student Management API</h3>
+                <ul class="project-desc">
+                  <li>
+                    Developed a robust RESTful API handling secure User
+                    Registration and Login functionalities.
+                  </li>
+                  <li>
+                    Implemented Pydantic for strict data validation and JWT
+                    Authentication for secure access control.
+                  </li>
+                  <li>
+                    Created custom JSON-based persistence layer to handle CRUD
+                    operations.
+                  </li>
+                </ul>
+                <div class="tech-tags">
+                  <span>Python</span><span>FastAPI</span><span>JWT</span
+                  ><span>Pydantic</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/mdwasikhan54/Student-Management-System-API"
+                    target="_blank"
+                    class="read-btn project-read-btn"
+                  >
+                    <i class="fab fa-github"></i> View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-content">
+                <div class="folder-icon"><i class="fas fa-robot"></i></div>
+                <h3>AI Chatbot Backend (RAG System)</h3>
+                <ul class="project-desc">
+                  <li>
+                    Built a retrieval-augmented backend to generate accurate,
+                    knowledge-grounded responses.
+                  </li>
+                  <li>
+                    Implemented secure authentication and structured request
+                    validation for production-ready APIs.
+                  </li>
+                  <li>
+                    Designed scalable data storage and efficient retrieval
+                    workflows for real-world usage.
+                  </li>
+                </ul>
+                <div class="tech-tags">
+                  <span>Python</span><span>FastAPI</span><span>PostgreSQL</span
+                  ><span>SQLAlchemy</span><span>RAG</span><span>JWT</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/mdwasikhan54/AI-Chatbot-Backend"
+                    target="_blank"
+                    class="read-btn project-read-btn"
+                  >
+                    <i class="fab fa-github"></i> View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-content">
+                <div class="folder-icon"><i class="fas fa-database"></i></div>
+                <h3>Relational DB Schema Design</h3>
+                <ul class="project-desc">
+                  <li>
+                    Architected a normalized Relational Database Schema for a
+                    student management system.
+                  </li>
+                  <li>
+                    Designed Entity-Relationship Diagrams (ERD) to visualize
+                    complex relationships.
+                  </li>
+                  <li>
+                    Wrote optimized SQL scripts for creating tables,
+                    constraints, and joins.
+                  </li>
+                </ul>
+                <div class="tech-tags">
+                  <span>PostgreSQL</span><span>ERD</span><span>SQL</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/mdwasikhan54/Student-DB-Schema"
+                    target="_blank"
+                    class="read-btn project-read-btn"
+                  >
+                    <i class="fab fa-github"></i> View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-content">
+                <div class="folder-icon"><i class="fas fa-hospital"></i></div>
+                <h3>Clinic Management System</h3>
+                <ul class="project-desc">
+                  <li>
+                    Built a desktop GUI application to manage clinic workflows
+                    with a clean, interactive interface.
+                  </li>
+                  <li>
+                    Implemented patient registration, queue handling, and
+                    structured record management.
+                  </li>
+                  <li>
+                    Used local file-based storage to persist data and keep the
+                    app lightweight and portable.
+                  </li>
+                </ul>
+                <div class="tech-tags">
+                  <span>Python</span><span>Tkinter</span><span>GUI</span
+                  ><span>File Storage</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/mdwasikhan54/Clinic-Management-System"
+                    target="_blank"
+                    class="read-btn project-read-btn"
+                  >
+                    <i class="fab fa-github"></i> View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-content">
+                <div class="folder-icon">
+                  <i class="fas fa-notes-medical"></i>
+                </div>
+                <h3>MediBook (Serverless Doctor Appointments)</h3>
+                <ul class="project-desc">
+                  <li>
+                    Built a full-stack, serverless appointment system running on
+                    the edge for low-latency performance.
+                  </li>
+                  <li>
+                    Designed a REST API with persistent SQL storage and clean
+                    validation-driven request handling.
+                  </li>
+                  <li>
+                    Implemented a responsive UI with modern interactions and a
+                    graceful demo-mode fallback.
+                  </li>
+                </ul>
+                <div class="tech-tags">
+                  <span>Cloudflare Workers</span><span>Hono</span
+                  ><span>D1 (SQLite)</span><span>REST API</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/mdwasikhan54/MediBook-App"
+                    target="_blank"
+                    class="read-btn project-read-btn"
+                  >
+                    <i class="fab fa-github"></i> View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="blogs" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>My <span>Blogs</span></h2>
-                <div class="header-bar"></div>
-            </div>
-            
-            <div class="glass-container">
-                <div class="blog-container">
-                    <div class="blog-box">
-                        <div class="blog-img">
-                            <img src="Image/blog1.jpeg" alt="Hardware">
-                        </div>
-                        <div class="blog-text">
-                            <h3>How Powerful Is Your PC?</h3>
-                            <p>Many professionals experience slow systems, laggy performance, or unresponsive applications — but the root cause often remains unclear. Is the processor too weak? Is the RAM bottlenecking performance? Or is it time for a hardware upgrade?</p>
-                            <a href="https://docs.google.com/document/d/1RN9U966PODLWSQfq7BPiXqP4rLBhWVmWMrRSGSoQmgE/edit?usp=sharing" target="_blank" class="read-btn">Read More →</a>
-                        </div>
-                    </div>
-                    <div class="blog-box">
-                        <div class="blog-img">
-                            <img src="Image/blog2.jpeg" alt="Python">
-                        </div>
-                        <div class="blog-text">
-                            <h3>Poetry in Python</h3>
-                            <p>এই ব্লগে Poetry এর বিভিন্ন দিক বিস্তারিতভাবে আলোচনা করা হয়েছে: এটি কী, কেন এবং কখন ব্যবহার করা উচিত, এবং এর ব্যবহারিক প্রয়োগের ধাপগুলো। এই গাইড পড়ে পাঠকরা Poetry এর সুবিধা ও কার্যকারিতা সম্পর্কে গভীরভাবে ধারণা অর্জন করতে পারবেন এবং তাদের প্রজেক্টগুলোকে আরও দক্ষতার সাথে পরিচালনা করতে সক্ষম হবেন।</p>
-                            <a href="https://docs.google.com/document/d/1z48hmRhUMNA_mXKni-M506b6s2rMSHc8C32yq7_-FfI/edit?usp=sharing" target="_blank" class="read-btn">Read More →</a>
-                        </div>
-                    </div>
-                    <div class="blog-box">
-                        <div class="blog-img">
-                            <img src="Image/blog3.jpeg" alt="Security">
-                        </div>
-                        <div class="blog-text">
-                            <h3>Are Your Messages Truly Safe?</h3>
-                            <p>🛡️ WhatsApp is Encrypted — But Are Your Messages Truly Safe? —Pegasus, the CIA, and your smartphone’s real vulnerability! We trust WhatsApp because it promises end-to-end encryption. But if your device is compromised, encryption alone won’t save you.</p>
-                            <a href="https://docs.google.com/document/d/1BFvFjxRfButBgYXoAUHhaCMJB20MZyLnaQsxbp-IkZI/edit?usp=sharing" target="_blank" class="read-btn">Read More →</a>
-                        </div>
-                    </div>
-                    <div class="blog-box">
-                        <div class="blog-img">
-                            <img src="/Image/blog4.png" alt="JS vs Python">
-                        </div>
-                        <div class="blog-text">
-                            <h3>জাভাস্ক্রিপ্ট OOP — মিথ নাকি বাস্তব?</h3>
-                            <p>অবজেক্ট-ওরিয়েন্টেড প্রোগ্রামিং (OOP) শুধু কোডের গঠন নয়—এটা চিন্তার ধরন। একই সাথে এটি প্রোগ্রামিং এর একটি অন্যতম ফান্ডামেন্টাল ও গুরুত্বপূর্ণ কনসেপ্ট। কিন্তু প্রশ্ন হলো, JavaScript কি সত্যিই সেই দর্শন অনুসরণ করে, নাকি শুধু প্রোটোটাইপের মোড়কে OOP-এর ছদ্মরূপ দেখায়?</p>
-                            <a href="https://docs.google.com/document/d/1QIFEQSQBh01KF2dctkjU7ngCfVaIjHiHrhnJuqhj5BM/edit?usp=sharing" target="_blank" class="read-btn">Read More →</a>
-                        </div>
-                    </div>
-                    <div class="blog-box">
-                        <div class="blog-img">
-                            <img src="/Image/blog5.jpg" alt="Linux Battery">
-                        </div>
-                        <div class="blog-text">
-                            <h3>Linux Laptop Battery Health & TLP</h3>
-                            <p>Linux laptop শুধু একটি device না—এটা অনেকের জন্য full-time workstation। তাই ডিভাইসের battery ও power management ঠিক না থাকলে performance, stability এবং battery lifespan—সবকিছুই প্রভাবিত হয়।
-                            চলুন smart ভাবে বিষয়টা বুঝে নেই। </p>
-                            <a href="https://docs.google.com/document/d/1vm7yOMxmxM0hM8dc6o3X1Nq92_25CBpjXbLhpuq7bTM/edit?tab=t.0" target="_blank" class="read-btn">Read More →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2>My <span>Blogs</span></h2>
+          <div class="header-bar"></div>
         </div>
+
+        <div class="glass-container">
+          <div class="blog-container">
+            <div class="blog-box">
+              <div class="blog-img">
+                <img src="Image/blog1.jpeg" alt="Hardware" />
+              </div>
+              <div class="blog-text">
+                <h3>How Powerful Is Your PC?</h3>
+                <p>
+                  Many professionals experience slow systems, laggy performance,
+                  or unresponsive applications — but the root cause often
+                  remains unclear. Is the processor too weak? Is the RAM
+                  bottlenecking performance? Or is it time for a hardware
+                  upgrade?
+                </p>
+                <a
+                  href="https://docs.google.com/document/d/1RN9U966PODLWSQfq7BPiXqP4rLBhWVmWMrRSGSoQmgE/edit?usp=sharing"
+                  target="_blank"
+                  class="read-btn"
+                  >Read More →</a
+                >
+              </div>
+            </div>
+            <div class="blog-box">
+              <div class="blog-img">
+                <img src="Image/blog2.jpeg" alt="Python" />
+              </div>
+              <div class="blog-text">
+                <h3>Poetry in Python</h3>
+                <p>
+                  এই ব্লগে Poetry এর বিভিন্ন দিক বিস্তারিতভাবে আলোচনা করা হয়েছে:
+                  এটি কী, কেন এবং কখন ব্যবহার করা উচিত, এবং এর ব্যবহারিক
+                  প্রয়োগের ধাপগুলো। এই গাইড পড়ে পাঠকরা Poetry এর সুবিধা ও
+                  কার্যকারিতা সম্পর্কে গভীরভাবে ধারণা অর্জন করতে পারবেন এবং
+                  তাদের প্রজেক্টগুলোকে আরও দক্ষতার সাথে পরিচালনা করতে সক্ষম
+                  হবেন।
+                </p>
+                <a
+                  href="https://docs.google.com/document/d/1z48hmRhUMNA_mXKni-M506b6s2rMSHc8C32yq7_-FfI/edit?usp=sharing"
+                  target="_blank"
+                  class="read-btn"
+                  >Read More →</a
+                >
+              </div>
+            </div>
+            <div class="blog-box">
+              <div class="blog-img">
+                <img src="Image/blog3.jpeg" alt="Security" />
+              </div>
+              <div class="blog-text">
+                <h3>Are Your Messages Truly Safe?</h3>
+                <p>
+                  🛡️ WhatsApp is Encrypted — But Are Your Messages Truly Safe?
+                  —Pegasus, the CIA, and your smartphone’s real vulnerability!
+                  We trust WhatsApp because it promises end-to-end encryption.
+                  But if your device is compromised, encryption alone won’t save
+                  you.
+                </p>
+                <a
+                  href="https://docs.google.com/document/d/1BFvFjxRfButBgYXoAUHhaCMJB20MZyLnaQsxbp-IkZI/edit?usp=sharing"
+                  target="_blank"
+                  class="read-btn"
+                  >Read More →</a
+                >
+              </div>
+            </div>
+            <div class="blog-box">
+              <div class="blog-img">
+                <img src="/Image/blog4.png" alt="JS vs Python" />
+              </div>
+              <div class="blog-text">
+                <h3>জাভাস্ক্রিপ্ট OOP — মিথ নাকি বাস্তব?</h3>
+                <p>
+                  অবজেক্ট-ওরিয়েন্টেড প্রোগ্রামিং (OOP) শুধু কোডের গঠন নয়—এটা
+                  চিন্তার ধরন। একই সাথে এটি প্রোগ্রামিং এর একটি অন্যতম
+                  ফান্ডামেন্টাল ও গুরুত্বপূর্ণ কনসেপ্ট। কিন্তু প্রশ্ন হলো,
+                  JavaScript কি সত্যিই সেই দর্শন অনুসরণ করে, নাকি শুধু
+                  প্রোটোটাইপের মোড়কে OOP-এর ছদ্মরূপ দেখায়?
+                </p>
+                <a
+                  href="https://docs.google.com/document/d/1QIFEQSQBh01KF2dctkjU7ngCfVaIjHiHrhnJuqhj5BM/edit?usp=sharing"
+                  target="_blank"
+                  class="read-btn"
+                  >Read More →</a
+                >
+              </div>
+            </div>
+            <div class="blog-box">
+              <div class="blog-img">
+                <img src="/Image/blog5.jpg" alt="Linux Battery" />
+              </div>
+              <div class="blog-text">
+                <h3>Linux Laptop Battery Health & TLP</h3>
+                <p>
+                  Linux laptop শুধু একটি device না—এটা অনেকের জন্য full-time
+                  workstation। তাই ডিভাইসের battery ও power management ঠিক না
+                  থাকলে performance, stability এবং battery lifespan—সবকিছুই
+                  প্রভাবিত হয়। চলুন smart ভাবে বিষয়টা বুঝে নেই।
+                </p>
+                <a
+                  href="https://docs.google.com/document/d/1vm7yOMxmxM0hM8dc6o3X1Nq92_25CBpjXbLhpuq7bTM/edit?tab=t.0"
+                  target="_blank"
+                  class="read-btn"
+                  >Read More →</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Let's <span>Connect</span></h2>
-                <div class="header-bar"></div>
-            </div>
+    
+    <section id="contact" class="section contact-section">
+  <div class="container">
 
-            <div class="glass-container contact-wrapper">
-                <div class="contact-header">
-                    <h3>Get In Touch</h3>
-                    <p>The best way to reach me is directly through email or WhatsApp.</p>
-                </div>
-                
-                <div class="direct-contact-row">
-                    <a href="mailto:mdwasikhan54@gmail.com" class="contact-card-glass email">
-                        <div class="icon-box"><i class="fas fa-envelope"></i></div>
-                        <div class="info">
-                            <h4>Email Me</h4>
-                            <span>mdwasikhan54@gmail.com</span>
-                        </div>
-                        <i class="fas fa-arrow-right arrow"></i>
-                    </a>
-                    <a href="https://wa.me/8801888387586" target="_blank" class="contact-card-glass whatsapp">
-                        <div class="icon-box"><i class="fab fa-whatsapp"></i></div>
-                        <div class="info">
-                            <h4>WhatsApp Me</h4>
-                            <span>+880 1888-387586</span>
-                        </div>
-                        <i class="fas fa-arrow-right arrow"></i>
-                    </a>
-                </div>
+    <div class="section-header">
+      <h2>Let's <span>Connect</span></h2>
+      <div class="header-bar"></div>
+    </div>
 
-                <div class="social-connect">
-                    <h4>Connect on Social Media</h4>
-                    <div class="social-row">
-                        <a href="https://linkedin.com/in/mdwasikhan54/" target="_blank" class="s-btn"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
-                        <a href="https://github.com/mdwasikhan54" target="_blank" class="s-btn"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="https://facebook.com/mdwasikhan.fb" target="_blank" class="s-btn"><i class="fab fa-facebook-f"></i> Facebook</a>
-                        <a href="https://x.com/wasi_khan86" target="_blank" class="s-btn"><i class="fab fa-twitter"></i> X</a>
-                    </div>
-                </div>
-            </div>
+    <div class="contact-grid glass-container">
+
+      <!-- LEFT SIDE -->
+      <div class="contact-left">
+
+        <h3 class="left-title">
+          <span class="c1">Get</span>
+          <span class="c2">in</span>
+          <span class="c3">Touch</span>
+        </h3>
+
+        <p class="left-subtitle">
+          I'm currently available for new projects. Feel free to reach out via email, phone, or any of my social channels below.
+        </p>
+
+        <h4 class="left-heading">Contact Details</h4>
+
+        <div class="contact-details">
+          <div class="detail-item">
+            <i class="fa-solid fa-user"></i>
+            <div><strong>Name:</strong> MD. ANISUJJAMAN ONTAR</div>
+          </div>
+
+          <div class="detail-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div><strong>Address:</strong> Hat Sherpur-5830, Sariakandi, Bogura</div>
+          </div>
+
+          <div class="detail-item">
+            <i class="fa-solid fa-phone"></i>
+            <div><strong>Mobile:</strong> +8801319541875</div>
+          </div>
+
+          <div class="detail-item">
+            <i class="fa-solid fa-envelope"></i>
+            <div><strong>Email:</strong> officalontar@gmail.com</div>
+          </div>
         </div>
-    </section>
+
+        <h3 id="liveTime" class="live-time-text"></h3>
+
+        <h4 class="left-heading">Social Media</h4>
+
+        <div class="social-grid">
+          <a class="social-card" target="_blank" href="https://www.linkedin.com/in/officalontar/">
+            <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+          </a>
+          <a class="social-card" target="_blank" href="https://www.facebook.com/officialontar">
+            <i class="fa-brands fa-facebook-f"></i> Facebook
+          </a>
+          <a class="social-card" target="_blank" href="https://www.instagram.com/officialontar/">
+            <i class="fa-brands fa-instagram"></i> Instagram
+          </a>
+          <a class="social-card" target="_blank" href="https://x.com/officialontar">
+            <i class="fa-brands fa-x-twitter"></i> X (Twitter)
+          </a>
+          <a class="social-card" target="_blank" href="https://github.com/officialontar">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+          <a class="social-card" target="_blank" href="https://wa.me/8801974068788">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+          </a>
+        </div>
+
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="contact-right">
+
+        <h3 class="right-title">
+          <span class="c1">Contact</span>
+          <span class="c2">Me!</span>
+        </h3>
+
+        <p class="moving-text">
+          <span>
+            Solve your problem... If you face any problem, You can hire me for a professional solution.
+          </span>
+        </p>
+        <br>
+
+        <form id="contactForm" class="contact-form">
+
+          <div class="form-grid">
+
+            <input type="text" id="full_name" placeholder="Full Name" required>
+            <input type="tel" id="phone" placeholder="Mobile Number" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="text" id="subject" placeholder="Subject" required>
+
+            <select id="blood_group" required>
+              <option value="">Select Blood Group</option>
+              <option>A+</option>
+              <option>A-</option>
+              <option>B+</option>
+              <option>B-</option>
+              <option>AB+</option>
+              <option>AB-</option>
+              <option>O+</option>
+              <option>O-</option>
+            </select>
+
+            <input type="file" id="attachment" accept="image/*,application/pdf" required>
+
+            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+
+          </div>
+
+          <div class="submit-wrap">
+            <button type="submit" class="btn-submit">Submit</button>
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
     <footer class="glass-footer">
-        <p>© <span id="year"></span> MD WASI KHAN. All Rights Reserved.</p>
+      <p>
+        © <span id="year"></span> MD ANISUJJAMAN ONTAR. All Rights Reserved.
+      </p>
     </footer>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
