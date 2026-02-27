@@ -63,7 +63,10 @@ Designed with:
 # 📊 GitHub Statistics
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=officialontar&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117" height="170">
+  <img src="https://github-readme-stats.vercel.app/api?username=officialontar&show_icons=true&theme=tokyonight&hide_border=true&border_radius=12&bg_color=0d1117" height="180"/>
+</p>
+
+<p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com?user=officialontar&theme=tokyonight&hide_border=true&background=0d1117" height="170">
 </p>
 
@@ -133,8 +136,22 @@ https://ontar-portfolio.netlify.app/
 # 🤝 Connect With Me
 
 <p align="center">
-  <a href="https://github.com/officialontar"><img src="https://skillicons.dev/icons?i=github"></a>
-  <a href="https://linkedin.com/in/officalontar"><img src="https://skillicons.dev/icons?i=linkedin"></a>
+  <a href="https://github.com/officialontar">
+    <img src="https://skillicons.dev/icons?i=github">
+  </a>
+  <a href="https://linkedin.com/in/officalontar">
+    <img src="https://skillicons.dev/icons?i=linkedin">
+  </a>
+  <a href="mailto:officalontar@gmail.com">
+    <img src="https://skillicons.dev/icons?i=gmail">
+  </a>
+</p>
+
+<p align="center">
+  <strong>MD ANISUJJAMAN ONTAR</strong><br>
+  🔗 GitHub: https://github.com/officialontar<br>
+  💼 LinkedIn: https://linkedin.com/in/officalontar<br>
+  📧 Email: officalontar@gmail.com
 </p>
 
 ---
