@@ -1,79 +1,140 @@
-# MD WASI KHAN - Personal Portfolio Website 🔥
+<!-- =============================== -->
+<!--        NEXT LEVEL README       -->
+<!-- =============================== -->
 
-**Live Demo:** [https://mdwasikhan-portfolio.netlify.app/](https://mdwasikhan-portfolio.netlify.app/)
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00ffc3,100:9d4edd&height=200&section=header&text=MD%20ANISUJJAMAN%20ONTAR&fontSize=35&fontColor=ffffff&animation=fadeIn" />
+</p>
 
-This repository contains the complete source code for my modern, single-page personal portfolio website. Built entirely with **HTML5, CSS3, and Vanilla JavaScript** — no frameworks or external libraries — it showcases my journey and skills as a **Python Backend Developer**.
+<h3 align="center">🚀 AI-Focused Backend Developer | Modern Web Engineer</h3>
 
-The design emphasizes a premium, modern aesthetic with glassmorphism effects, interactive animations, and flawless responsiveness across all devices.
+<p align="center">
+  <a href="https://ontar-portfolio.netlify.app">
+    🌐 Live Portfolio
+  </a>
+</p>
 
----
-
-## ✨ Key Features
-
-- **Custom Interactive Particle Background** — Canvas-based moving particles with dynamic connecting lines (pure JS, no external libraries)
-- **Smooth Typing Animation** — Hero section with realistic typing effect and permanent blinking cursor
-- **Dark / Light Theme Toggle** — Fully adaptive colors, persisted via localStorage
-- **Glassmorphism UI** — Frosted glass containers with backdrop blur and subtle shadows
-- **Rotating Profile Border & Floating Skill Icons** — Eye-catching hero enhancements
-- **Smooth Scroll Navigation** — Active section highlighting + mobile hamburger menu
-- **Fully Responsive Design** — Optimized for desktop, tablet, and mobile (including very small screens)
-- **Performance Focused** — Lightweight, fast-loading static site
-
-## 🛠 Tech Stack
-
-- **HTML5** — Semantic and clean structure
-- **CSS3** — CSS variables, Flexbox, Grid, custom animations, glass effects
-- **Vanilla JavaScript** — Typing effect, particles, theme toggle, mobile menu, scroll spy
-- **Fonts** — Poppins, Montserrat, Fira Code (Google Fonts)
-- **Icons** — Font Awesome 6 & Devicon
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=officialontar&label=Profile%20Views&color=0e75b6&style=flat" />
+  <img src="https://img.shields.io/github/stars/officialontar/ontar-portfolio?style=flat" />
+  <img src="https://img.shields.io/github/forks/officialontar/ontar-portfolio?style=flat" />
+</p>
 
 ---
 
-### Dark Mode (Default)
+# 🌐 Live Website
 
-![Hero Section - Dark Mode](Image/screenshot-dark-hero.jpg)
-
-![Projects Section - Dark Mode](Image/screenshot-dark-projects.jpg)
-
-### Light Mode
-
-![Hero Section - Light Mode](Image/screenshot-light-hero.jpg)
-
-![Skills Section - Light Mode](Image/screenshot-light-skills.jpg)
+👉 **https://ontar-portfolio.netlify.app**
 
 ---
 
-## 📂 Project Structure
-.
-├── home.html          # Single-page HTML file
-├── style.css          # All styles with CSS variables for theming
-├── script.js          # All interactive logic (typing, particles, theme, menu, etc.)
-├── Image/             # Profile photos, blog thumbnails, icons, and screenshots
-└── README.md          # This file
-text## 📸 Screenshots
+# 📖 About This Project
 
-## 🏗️ Local Setup
+This is my modern personal portfolio website built with:
 
-
-1.  **Clone the Repository:**
-    ```bash
-    git clone https://github.com/mdwasikhan54/mdwasikhan-portfolio.git
-    ```
-
-2.  **Navigate to the Project Directory:**
-    ```bash
-    cd mdwasikhan-portfolio
-    ```
-
-3.  **Launch:**
-    Open the **`home.html`** file directly in your web browser.
+- Pure HTML5
+- Advanced CSS3 (Glass UI + Animations)
+- Vanilla JavaScript (ES6)
+- Fully Responsive Design
+- Particle Background System
+- Mobile Dropdown Navigation
 
 ---
 
-### 👨‍💻 Developed by [MD WASI KHAN](https://mdwasikhan-portfolio.netlify.app/) 
+# ✨ Features
 
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mdwasikhan54)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/mdwasikhan54)
-</div>
+✅ Dark / Light Mode Toggle  
+✅ Fully Responsive Mobile Menu  
+✅ Animated Typing Effect  
+✅ Active Scroll Highlight  
+✅ Particle Background Animation  
+✅ Live Bangladesh Time  
+✅ Contact Form Validation  
+✅ Netlify Auto Deployment  
 
-If you find this project helpful, please drop a ⭐ star on the repo\!
+---
+
+# 🖼️ Screenshots
+
+> ⚠️ Put images inside `screenshots` folder.
+
+## 💻 Desktop
+
+![Desktop](screenshots/desktop.png)
+
+## 📱 Mobile
+
+![Mobile](screenshots/mobile.png)
+
+## 🌙 Dark Mode
+
+![Dark Mode](screenshots/darkmode.png)
+
+---
+
+# 🛠️ Tech Stack
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=html,css,js,github,netlify" />
+</p>
+
+---
+
+# 📂 Project Structure
+
+```
+ontar-portfolio/
+│
+├── index.html
+├── style.css
+├── script.js
+├── Image/
+│   ├── my-photo.jpg
+│   ├── Formal.jpg
+│
+├── screenshots/
+│   ├── desktop.png
+│   ├── mobile.png
+│   └── darkmode.png
+│
+└── README.md
+```
+
+---
+
+# 📊 GitHub Stats
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=officialontar&show_icons=true&theme=tokyonight" />
+  <br/>
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=officialontar&theme=tokyonight" />
+</p>
+
+---
+
+# 📬 Connect With Me
+
+- 💼 LinkedIn: https://linkedin.com/in/officalontar  
+- 💻 GitHub: https://github.com/officialontar  
+- 🌐 Portfolio: https://ontar-portfolio.netlify.app  
+
+---
+
+# 👨‍💻 Author
+
+**MD ANISUJJAMAN ONTAR**  
+AI-Focused Backend Developer  
+
+---
+
+<p align ="center">
+⭐ If you like this project, consider giving it a star!
+</p>
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00ffc3,100:9d4edd&height=120&section=footer"/>
+</p>
+
+<!-- =============================== -->
+<!--            END README          -->
+<!-- =============================== -->
