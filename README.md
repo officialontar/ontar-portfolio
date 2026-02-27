@@ -58,17 +58,42 @@ This is my modern personal portfolio website built with:
 
 > ⚠️ Put images inside `screenshots` folder.
 
-## 💻 Desktop
+## 🖼️ Project Screenshots
 
-![Desktop](screenshots/desktop.png)
+---
 
-## 📱 Mobile
+### 💻 Light Mode – Home
+![Light Home](Image/screenshot-light-Home.png)
 
-![Mobile](screenshots/mobile.png)
+---
 
-## 🌙 Dark Mode
+### 💻 Light Mode – About
+![Light About](Image/screenshot-light-About.png)
 
-![Dark Mode](screenshots/darkmode.png)
+---
+
+### 🌙 Dark Mode – Hero
+![Dark Hero](Image/screenshot-dark-hero.png)
+
+---
+
+### 🌙 Dark Mode – About
+![Dark About](Image/screenshot-dark-About.png)
+
+---
+
+### 🌙 Dark Mode – Skills
+![Dark Skills](Image/screenshot-dark-Skills.png)
+
+---
+
+### 🌙 Dark Mode – Contact
+![Dark Contact](Image/screenshot-dark-Contact.png)
+
+---
+
+### 🌙 Dark Mode – Contact (Form View)
+![Dark Contact Form](Image/screenshot-dark-Contact1.png)
 
 ---
 
