@@ -1,107 +1,100 @@
-<!-- =============================== -->
-<!--        NEXT LEVEL README       -->
-<!-- =============================== -->
-
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00ffc3,100:9d4edd&height=200&section=header&text=MD%20ANISUJJAMAN%20ONTAR&fontSize=35&fontColor=ffffff&animation=fadeIn" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00ffc3,100:9d4edd&height=230&section=header&text=MD%20ANISUJJAMAN%20ONTAR&fontSize=40&fontColor=ffffff&animation=fadeIn&fontAlignY=35"/>
 </p>
 
 <h3 align="center">🚀 AI-Focused Backend Developer | Modern Web Engineer</h3>
 
 <p align="center">
-  <a href="https://ontar-portfolio.netlify.app">
-    🌐 Live Portfolio
+  🌐 <strong>Live Portfolio:</strong><br>
+  <a href="https://ontar-portfolio.netlify.app/" target="_blank">
+    https://ontar-portfolio.netlify.app/
   </a>
 </p>
 
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=officialontar&label=Profile%20Views&color=0e75b6&style=flat" />
-  <img src="https://img.shields.io/github/stars/officialontar/ontar-portfolio?style=flat" />
-  <img src="https://img.shields.io/github/forks/officialontar/ontar-portfolio?style=flat" />
-</p>
-
 ---
 
-# 🌐 Live Website
+# 📌 Project Overview
 
-👉 **https://ontar-portfolio.netlify.app**
+This is my fully responsive, production-ready personal portfolio website built using modern front-end architecture.
 
----
+Designed with:
 
-# 📖 About This Project
-
-This is my modern personal portfolio website built with:
-
-- Pure HTML5
-- Advanced CSS3 (Glass UI + Animations)
-- Vanilla JavaScript (ES6)
-- Fully Responsive Design
-- Particle Background System
-- Mobile Dropdown Navigation
-
----
-
-# ✨ Features
-
-✅ Dark / Light Mode Toggle  
-✅ Fully Responsive Mobile Menu  
-✅ Animated Typing Effect  
-✅ Active Scroll Highlight  
-✅ Particle Background Animation  
-✅ Live Bangladesh Time  
-✅ Contact Form Validation  
-✅ Netlify Auto Deployment  
+- ✨ Glassmorphism UI
+- 🌙 Dark / Light Mode Toggle
+- ⚡ Animated Typing Effect
+- 🌌 Particle Background Animation
+- 📱 Responsive Mobile Navigation
+- 🕒 Live Bangladesh Time
+- 📩 Contact Form Validation
+- 🚀 Deployed on Netlify
 
 ---
 
 # 🖼️ Screenshots
 
-> ⚠️ Put images inside `screenshots` folder.
+## 🌙 Dark Mode
 
-## 🖼️ Project Screenshots
-
----
-
-### 💻 Light Mode – Home
-![Light Home](Image/screenshot-light-Home.png)
-
----
-
-### 💻 Light Mode – About
-![Light About](Image/screenshot-light-About.png)
+<p align="center">
+  <img src="Image/screenshot-dark-hero.png" width="85%"><br><br>
+  <img src="Image/screenshot-dark-About.png" width="85%"><br><br>
+  <img src="Image/screenshot-dark-Skills.png" width="85%"><br><br>
+  <img src="Image/screenshot-dark-Contact.png" width="85%">
+</p>
 
 ---
 
-### 🌙 Dark Mode – Hero
-![Dark Hero](Image/screenshot-dark-hero.png)
+## ☀ Light Mode
 
----
-
-### 🌙 Dark Mode – About
-![Dark About](Image/screenshot-dark-About.png)
-
----
-
-### 🌙 Dark Mode – Skills
-![Dark Skills](Image/screenshot-dark-Skills.png)
-
----
-
-### 🌙 Dark Mode – Contact
-![Dark Contact](Image/screenshot-dark-Contact.png)
-
----
-
-### 🌙 Dark Mode – Contact (Form View)
-![Dark Contact Form](Image/screenshot-dark-Contact1.png)
+<p align="center">
+  <img src="Image/screenshot-light-Home.png" width="85%"><br><br>
+  <img src="Image/screenshot-light-About.png" width="85%">
+</p>
 
 ---
 
 # 🛠️ Tech Stack
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=html,css,js,github,netlify" />
+  <img src="https://skillicons.dev/icons?i=html,css,js,git,github,linux" />
 </p>
+
+---
+
+# 📊 GitHub Statistics
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=officialontar&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117" height="170">
+  <img src="https://github-readme-streak-stats.herokuapp.com?user=officialontar&theme=tokyonight&hide_border=true&background=0d1117" height="170">
+</p>
+
+---
+
+# 📈 Most Used Languages
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=officialontar&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117" height="170">
+</p>
+
+---
+
+# 📉 Contribution Activity Graph
+
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=officialontar&theme=tokyo-night&hide_border=true&bg_color=0d1117">
+</p>
+
+---
+
+# 🚀 Features
+
+✔ Fully Responsive Layout  
+✔ Clean Modern UI  
+✔ Animated Navigation  
+✔ Dark & Light Mode  
+✔ Glassmorphism Cards  
+✔ Smooth Scroll  
+✔ Interactive Contact Section  
+✔ Optimized Performance  
 
 ---
 
@@ -113,53 +106,53 @@ ontar-portfolio/
 ├── index.html
 ├── style.css
 ├── script.js
-├── Image/
-│   ├── my-photo.jpg
-│   ├── Formal.jpg
+├── README.md
 │
-├── screenshots/
-│   ├── desktop.png
-│   ├── mobile.png
-│   └── darkmode.png
-│
-└── README.md
+└── Image/
+    ├── Formal.jpg
+    ├── my-photo.jpg
+    ├── screenshot-dark-hero.png
+    ├── screenshot-dark-About.png
+    ├── screenshot-dark-Skills.png
+    ├── screenshot-dark-Contact.png
+    ├── screenshot-light-Home.png
+    └── screenshot-light-About.png
 ```
 
 ---
 
-# 📊 GitHub Stats
+# 🌍 Deployment
+
+Hosted on **Netlify (Free Hosting + Subdomain)**
+
+🔗 Live URL:
+https://ontar-portfolio.netlify.app/
+
+---
+
+# 🤝 Connect With Me
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=officialontar&show_icons=true&theme=tokyonight" />
-  <br/>
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=officialontar&theme=tokyonight" />
+  <a href="https://github.com/officialontar"><img src="https://skillicons.dev/icons?i=github"></a>
+  <a href="https://linkedin.com/in/officalontar"><img src="https://skillicons.dev/icons?i=linkedin"></a>
 </p>
 
 ---
 
-# 📬 Connect With Me
+# ⭐ Support
 
-- 💼 LinkedIn: https://linkedin.com/in/officalontar  
-- 💻 GitHub: https://github.com/officialontar  
-- 🌐 Portfolio: https://ontar-portfolio.netlify.app  
+If you appreciate this project:
 
----
-
-# 👨‍💻 Author
-
-**MD ANISUJJAMAN ONTAR**  
-AI-Focused Backend Developer  
+⭐ Star this repository  
+🍴 Fork it  
+🔗 Share it  
 
 ---
 
-<p align ="center">
-⭐ If you like this project, consider giving it a star!
+<p align="center">
+  © 2026 MD ANISUJJAMAN ONTAR — All Rights Reserved
 </p>
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00ffc3,100:9d4edd&height=120&section=footer"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:9d4edd,100:00ffc3&height=180&section=footer"/>
 </p>
-
-<!-- =============================== -->
-<!--            END README          -->
-<!-- =============================== -->
