@@ -63,7 +63,7 @@ Designed with:
 # 📊 GitHub Statistics
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=officialontar&show_icons=true&theme=tokyonight&hide_border=true&border_radius=12&bg_color=0d1117" height="180"/>
+  <img src="https://github-readme-stats.vercel.app/api?username=officialontar&show_icons=true&theme=tokyonight" />
 </p>
 
 <p align="center">
@@ -75,7 +75,7 @@ Designed with:
 # 📈 Most Used Languages
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=officialontar&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117" height="170">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=officialontar&layout=compact&theme=tokyonight" height="170">
 </p>
 
 ---
