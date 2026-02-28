@@ -226,7 +226,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-
   /* ===============================
      6️⃣ Footer Year
   ================================ */
@@ -389,7 +388,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const cloudName = "dfshwrf62";
 
         const response = await fetch(
-          `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+          `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
           {
             method: "POST",
             body: formData,
@@ -399,8 +398,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const data = await response.json();
         const imageUrl = data.secure_url;
 
-        if (!imageUrl) {
-          throw new Error("Cloudinary upload failed");
+        if (!response.ok || !imageUrl) {
+          throw new Error(data?.error?.message || "Cloudinary upload failed");
         }
 
         // Save to Firestore
