@@ -982,38 +982,35 @@
 </section>
 
 
-    <footer class="glass-footer">
+        <footer class="glass-footer">
       <p>
         © <span id="year"></span> MD ANISUJJAMAN ONTAR. All Rights Reserved.
       </p>
     </footer>
 
+    <!-- Firebase CDN -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyCmXHlfU_nlendBG72pFxSpa1fQtxn2nmU",
+        authDomain: "ontar-portfolio.firebaseapp.com",
+        projectId: "ontar-portfolio",
+        storageBucket: "ontar-portfolio.firebasestorage.app",
+        messagingSenderId: "377626395117",
+        appId: "1:377626395117:web:eaa2fc5d435f244e51a7e4",
+        measurementId: "G-55M6B3QW9E"
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+      const storage = firebase.storage();
+    </script>
+
+    <!-- script.js একবারই থাকবে -->
     <script src="script.js"></script>
 
-
-   <!-- Firebase CDN -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js"></script>
-
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyCmXHlfU_nlendBG72pFxSpa1fQtxn2nmU",
-    authDomain: "ontar-portfolio.firebaseapp.com",
-    projectId: "ontar-portfolio",
-    storageBucket: "ontar-portfolio.firebasestorage.app",
-    messagingSenderId: "377626395117",
-    appId: "1:377626395117:web:eaa2fc5d435f244e51a7e4",
-    measurementId: "G-55M6B3QW9E"
-  };
-
-  firebase.initializeApp(firebaseConfig);
-
-  const db = firebase.firestore();
-  const storage = firebase.storage();
-</script>
-
-<!-- তোমার script.js একদম শেষে -->
-<script src="script.js"></script>
   </body>
 </html>
