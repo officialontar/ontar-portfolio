@@ -218,6 +218,7 @@ if (canvas) {
 }
 
 
+
 /* ===============================
    6️⃣ Footer Year
 ================================ */
@@ -273,57 +274,23 @@ if (movingSpan) {
 
 
 /* ===============================
-   9️⃣ Netlify AJAX Submit + Validation
+   9️⃣ Image Preview Before Upload
 ================================ */
+const fileInput = document.getElementById("attachment");
+const previewImage = document.getElementById("previewImage");
 
-const form = document.getElementById("contactForm");
-
-if (form) {
-
-  form.addEventListener("submit", async function (e) {
-
-    e.preventDefault();
-
-    const name = document.getElementById("full_name")?.value.trim();
-    const email = document.getElementById("email")?.value.trim();
-    const phone = document.getElementById("phone")?.value.trim();
-    const subject = document.getElementById("subject")?.value.trim();
-    const blood = document.getElementById("blood_group")?.value;
-    const message = document.getElementById("message")?.value.trim();
-    const file = document.getElementById("attachment")?.files[0];
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^[0-9+\s()-]{7,20}$/;
-
-    if (!name || !email || !phone || !subject || !blood || !message || !file) {
-      alert("Please fill up all fields before submitting.");
-      return;
-    }
-
-    if (!emailRegex.test(email)) {
-      alert("Please enter a valid email address.");
-      return;
-    }
-
-    if (!phoneRegex.test(phone)) {
-      alert("Please enter a valid phone number.");
-      return;
-    }
-
-    try {
-
-      const formData = new FormData(form);
-
-      await fetch("/", {
-        method: "POST",
-        body: formData
-      });
-
-      showPopup();   // popup show
-      form.reset();  // reset form
-
-    } catch (error) {
-      alert("Something went wrong. Please try again.");
+if (fileInput && previewImage) {
+  fileInput.addEventListener("change", function () {
+    const file = this.files[0];
+    if (file && file.type.startsWith("image/")) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        previewImage.src = e.target.result;
+        previewImage.style.display = "block";
+      };
+      reader.readAsDataURL(file);
+    } else {
+      previewImage.style.display = "none";
     }
 
   });
@@ -333,6 +300,7 @@ if (form) {
 /* ===============================
    🔟 SUCCESS POPUP WITH TYPING
 ================================ */
+
 
 function showPopup() {
 
@@ -375,5 +343,70 @@ function showPopup() {
 window.closePopup = function () {
   document.getElementById("successPopup")?.classList.remove("active");
 };
+
+/* ===============================
+   1️⃣1️⃣ Cloudinary + Firestore Submit
+================================ */
+
+const form = document.getElementById("contactForm");
+
+if (form) {
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const fullName = document.getElementById("full_name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const bloodGroup = document.getElementById("blood_group").value;
+    const message = document.getElementById("message").value.trim();
+    const file = document.getElementById("attachment").files[0];
+
+    if (!file) {
+      alert("Please select a file.");
+      return;
+    }
+
+    try {
+      // Upload to Cloudinary
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "ontar_unsigned");
+
+      const cloudName = "dfshwrf62";
+
+      const response = await fetch(
+        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await response.json();
+      const imageUrl = data.secure_url;
+
+      // Save to Firestore
+      await db.collection("contacts").add({
+        fullName,
+        phone,
+        email,
+        subject,
+        bloodGroup,
+        message,
+        imageUrl,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+
+      showPopup();
+      form.reset();
+      previewImage.style.display = "none";
+
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong!");
+    }
+  });
+}
 
 });
