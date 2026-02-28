@@ -893,38 +893,62 @@
         </p>
         <br>
 
-        <form id="contactForm" class="contact-form">
+       <form 
+  id="contactForm"
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  enctype="multipart/form-data"
+  class="contact-form"
+>
 
-          <div class="form-grid">
+  <input type="hidden" name="form-name" value="contact" />
 
-            <input type="text" id="full_name" placeholder="Full Name" required>
-            <input type="tel" id="phone" placeholder="Mobile Number" required>
-            <input type="email" id="email" placeholder="Email Address" required>
-            <input type="text" id="subject" placeholder="Subject" required>
+  <!-- honeypot spam protection -->
+  <input type="hidden" name="bot-field" />
 
-            <select id="blood_group" required>
-              <option value="">Select Blood Group</option>
-              <option>A+</option>
-              <option>A-</option>
-              <option>B+</option>
-              <option>B-</option>
-              <option>AB+</option>
-              <option>AB-</option>
-              <option>O+</option>
-              <option>O-</option>
-            </select>
+  <div class="form-grid">
 
-            <input type="file" id="attachment" accept="image/*,application/pdf" required>
+    <input type="text" name="full_name" id="full_name" placeholder="Full Name" required>
+    <input type="tel" name="phone" id="phone" placeholder="Mobile Number" required>
+    <input type="email" name="email" id="email" placeholder="Email Address" required>
+    <input type="text" name="subject" id="subject" placeholder="Subject" required>
 
-            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+    <select name="blood_group" id="blood_group" required>
+      <option value="">Select Blood Group</option>
+      <option>A+</option>
+      <option>A-</option>
+      <option>B+</option>
+      <option>B-</option>
+      <option>AB+</option>
+      <option>AB-</option>
+      <option>O+</option>
+      <option>O-</option>
+    </select>
 
-          </div>
+    <input type="file" name="attachment" id="attachment" accept="image/*,application/pdf" required>
 
-          <div class="submit-wrap">
-            <button type="submit" class="btn-submit">Submit</button>
-          </div>
+    <textarea name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
 
-        </form>
+  </div>
+
+  <div class="submit-wrap">
+    <button type="submit" class="btn-submit">Submit</button>
+  </div>
+</form>
+
+
+<!-- SUCCESS POPUP -->
+<div id="successPopup" class="popup-overlay">
+  <div class="popup-box">
+
+    <h2 id="popupTitle"></h2>
+    <p id="popupMessage"></p>
+
+    <button class="popup-btn" onclick="closePopup()">Close</button>
+
+  </div>
+</div>
 
       </div>
 

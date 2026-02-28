@@ -216,17 +216,7 @@ header {
   transform: rotate(20deg);
 }
 
-.nav-toggle-btn {
-  display: none;
-  background: transparent;
-  border: 1px solid var(--border-color);
-  padding: 0.5rem;
-  border-radius: 5px;
-  cursor: pointer;
-  flex-direction: column;
-  gap: 5px;
-  width: 40px;
-}
+
 .nav-toggle-btn span {
   display: block;
   width: 25px;
@@ -570,18 +560,24 @@ body.light-mode .cursor {
 }
 
 /* Super Simple Mobile Menu Toggle - No Lag on Netlify */
+
 .nav-toggle-btn {
   display: none;
   background: none;
-  border: none;
+  /* background: transparent; */
+  border: 1px solid var(--border-color);
   font-size: 1.8rem;
   color: var(--text-main);
   cursor: pointer;
   position: relative;
   width: 40px;
   height: 40px;
-  padding: 0;
+  padding: 0.5rem;
+  border-radius: 5px;
+  flex-direction: column;
+  gap: 5px;
 }
+
 
 #menu-icon,
 #close-icon {
@@ -684,9 +680,9 @@ body.light-mode .nav-menu {
 
 
 
-  .nav-toggle-btn {
+  /* .nav-toggle-btn {
     display: block;
-  }
+  } */
 
   .nav-menu {
     position: absolute;
@@ -1402,6 +1398,76 @@ body.light-mode .read-btn.project-read-btn:hover {
 
 
 
+/* ============================= */
+/* ===== SUCCESS POPUP CSS ===== */
+/* ============================= */
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.popup-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-box {
+  background: linear-gradient(135deg, #08131d, #0f1c2e);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  transform: scale(0.8);
+  transition: 0.4s ease;
+  border: 1px solid rgba(0,255,200,0.3);
+  box-shadow: 0 0 40px rgba(0,255,200,0.3);
+}
+
+.popup-overlay.active .popup-box {
+  transform: scale(1);
+}
+
+.popup-box h2 {
+  color: #00ffc3;
+  margin-bottom: 15px;
+  min-height: 40px;
+}
+
+.popup-box p {
+  color: #c9d1d9;
+  min-height: 50px;
+}
+
+.popup-btn {
+  margin-top: 20px;
+  padding: 10px 25px;
+  border-radius: 10px;
+  border: none;
+  background: #00c896;
+  color: #001b16;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.popup-btn:hover {
+  background: #009e73;
+  box-shadow: 0 0 20px rgba(0,200,150,0.7);
+}
+
+
+
 
 
 .glass-footer {
@@ -1413,9 +1479,6 @@ body.light-mode .read-btn.project-read-btn:hover {
   font-size: 0.9rem;
   margin-top: 4rem;
 }
-
-
-
 
 
 /* --- RESPONSIVE --- */
@@ -1568,7 +1631,153 @@ body.light-mode .read-btn.project-read-btn:hover {
 }
 
 
+/* ===============================
+   HERO RESPONSIVE FIX
+================================ */
+
+@media (max-width: 992px) {
+
+  .hero-content {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  .hero-text {
+    width: 100%;
+  }
+
+  #typing-name {
+    font-size: 2.2rem;
+    line-height: 1.3;
+  }
+
+  .static-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero-text p {
+    max-width: 100%;
+  }
+
+  .hero-btns {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-img {
+    width: 280px;
+    height: 280px;
+  }
+
+  .img-border {
+    width: 240px;
+    height: 240px;
+  }
+}
+
+@media (max-width: 576px) {
+
+  #typing-name {
+    font-size: 1.9rem;
+  }
+
+  .hero-img {
+    width: 230px;
+    height: 230px;
+  }
+
+  .img-border {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+
+
+/* ===============================
+   CONTACT RESPONSIVE FIX
+================================ */
+
+@media (max-width: 992px) {
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .contact-left,
+  .contact-right {
+    width: 100%;
+  }
+
+  .contact-form .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    width: 100%;
+  }
+
+  .social-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .glass-container {
+    padding: 1.5rem;
+  }
+
+  .social-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .left-title,
+  .right-title {
+    font-size: 26px;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    padding: 12px;
+  }
+}
+
+
+
+@media (max-width: 576px) {
+
+  .popup-box {
+    width: 95%;
+    padding: 25px;
+  }
+
+  .popup-box h2 {
+    font-size: 20px;
+  }
+
+  .popup-box p {
+    font-size: 14px;
+  }
+}
 
 
 
 
+
+/* --- RESPONSIVE --- */
+@media (max-width: 375px) {
+}
+
+/* ===============================
+   HERO TYPING TEXT FIX
+================================ */
+
+#typing-name {
+  word-break: break-word;
+}
