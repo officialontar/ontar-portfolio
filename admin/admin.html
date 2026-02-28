@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel • Contact Submissions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:#fff;
+  }
+  .container{
+    max-width:1300px;
+    margin:auto;
+    padding:20px;
+  }
+  .card{
+    background: rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 18px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+  }
+
+  /* Buttons */
+  button{
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    color:#fff;
+  }
+  .primary{background:#3b82f6;}
+  .warning{background:#f59e0b;}
+  .danger{background:#ef4444;}
+  .success{background:#10b981;}
+  .ghost{background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.14);}
+
+  /* Inputs */
+  input, select, textarea{
+    padding: 9px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(0,0,0,0.25);
+    color:#fff;
+    outline:none;
+  }
+  textarea{min-height:90px; resize:vertical;}
+  input::placeholder{color:rgba(255,255,255,0.55);}
+
+  /* Login */
+  #loginSection .card{
+    max-width:420px;
+    margin: 120px auto 0;
+  }
+  #loginSection h2{margin:0 0 12px;}
+  #loginSection .row{display:flex; gap:10px; margin-top:10px; align-items:center;}
+  #loginSection .row button{width:120px;}
+  #loginError{margin-top:10px; color:#ffb4b4; font-weight:700; display:none;}
+
+  /* Header */
+  .topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .topbar h2{margin:0;}
+  .meta{
+    margin-top:8px;
+    color: rgba(255,255,255,0.75);
+    font-size: 13px;
+  }
+
+  /* Controls */
+  .controls{
+    margin-top:16px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  .controls input{
+    width: 260px;
+  }
+  .controls select{
+    min-width: 140px;
+  }
+
+  /* Table */
+  .tableWrap{
+    margin-top: 16px;
+    overflow:auto;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(0,0,0,0.18);
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    min-width: 980px;
+  }
+  th, td{
+    padding: 12px 12px;
+    text-align:left;
+    vertical-align:middle;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    white-space:nowrap;
+  }
+  th{
+    background:#0f172a;
+    position: sticky;
+    top:0;
+    z-index:1;
+  }
+  tr:nth-child(even){
+    background: rgba(255,255,255,0.04);
+  }
+
+  .thumb{
+    width:110px;
+    height:70px;
+    object-fit:cover;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.06);
+  }
+  .actions{
+    display:flex;
+    gap:8px;
+  }
+
+  /* Modal */
+  .modal{
+    position:fixed;
+    inset:0;
+    background: rgba(0,0,0,0.72);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:18px;
+    z-index:50;
+  }
+  .modal.open{display:flex;}
+  .modal-content{
+    width: min(820px, 100%);
+    background:#111827;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 20px 70px rgba(0,0,0,0.55);
+    overflow:hidden;
+
+    /* ✅ ADD (so the close button can be positioned on top always) */
+    position: relative;
+  }
+  .modal-head{
+    padding: 14px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.03);
+  }
+  .modal-title{font-weight:900;}
+  .modal-body{padding: 16px;}
+  .grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .kv{
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 12px;
+    padding: 10px;
+  }
+  .kv .k{color:rgba(255,255,255,0.72); font-size:12px;}
+  .kv .v{margin-top:6px; font-weight:800; word-break:break-word;}
+  .bigimg{
+    width:100%;
+    max-height:340px;
+    object-fit:cover;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.12);
+    margin-bottom: 12px;
+    background: rgba(255,255,255,0.05);
+  }
+  .modal-foot{
+    padding: 14px 16px;
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.03);
+    flex-wrap:wrap;
+  }
+
+  .notfound{
+    padding: 18px;
+    color: rgba(255,255,255,0.75);
+    text-align:center;
+
+    /* ✅ UPDATED (red highlight) */
+    background: rgba(239,68,68,0.15);
+    border: 1px solid rgba(239,68,68,0.40);
+    border-radius: 12px;
+    color: #ff8f8f;
+    font-weight: 900;
+  }
+
+  @media (max-width: 720px){
+    .controls input{width:100%;}
+    .grid{grid-template-columns: 1fr;}
+    table{min-width:900px;}
+  }
+
+  select{
+  padding: 9px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: linear-gradient(135deg,#1e293b,#0f172a);
+  color:#fff;
+  outline:none;
+  font-weight:600;
+}
+
+select option{
+  background:#0f172a;
+  color:#fff;
+}
+
+/* View modal close button improvement */
+.modal-head button{
+  font-size:16px;
+  font-weight:900;
+  background:#ef4444;
+  border:1px solid rgba(255,255,255,0.15);
+}
+
+.modal-head button:hover{
+  background:#dc2626;
+}
+
+/* ✅ ADD: force cross button always visible on top (even if header not visible on your layout) */
+#closeViewBtn{
+  position:absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 9999;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+
+/* === View Modal Scroll Fix (DO NOT REMOVE ANYTHING ELSE) === */
+
+/* পুরো modal content scrollable */
+.modal-content{
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* body অংশ স্ক্রল করবে */
+.modal-body{
+  overflow-y: auto;
+  max-height: calc(90vh - 140px);
+}
+
+/* message box আলাদা স্ক্রল */
+#viewMessage{
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* সুন্দর scrollbar */
+.modal-body::-webkit-scrollbar,
+#viewMessage::-webkit-scrollbar{
+  width:6px;
+}
+
+.modal-body::-webkit-scrollbar-thumb,
+#viewMessage::-webkit-scrollbar-thumb{
+  background:#3b82f6;
+  border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="loginSection" class="container">
+  <div class="card">
+    <h2>Admin Login</h2>
+    <form id="loginForm">
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+      <div class="row">
+        <button class="primary" type="submit">Login</button>
+        <button class="ghost" type="button" id="clearLoginBtn">Clear</button>
+      </div>
+      <div id="loginError">Login failed. Check email/password.</div>
+    </form>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" style="display:none;">
+  <div class="container">
+    <div class="card">
+      <div class="topbar">
+        <div>
+          <h2>Contact Form Submissions</h2>
+          <div class="meta" id="metaText">Realtime enabled</div>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <button class="success" id="exportBtn">Export CSV</button>
+          <button class="danger" id="logoutBtn">Logout</button>
+        </div>
+      </div>
+
+      <div class="controls">
+        <input type="text" id="searchInput" placeholder="Search name / email / phone / blood / subject ...">
+        <select id="bloodFilter">
+          <option value="">All Blood</option>
+          <option>A+</option><option>A-</option>
+          <option>B+</option><option>B-</option>
+          <option>AB+</option><option>AB-</option>
+          <option>O+</option><option>O-</option>
+        </select>
+
+        <select id="nameSort">
+          <option value="">Sort Name</option>
+          <option value="az">A → Z</option>
+          <option value="za">Z → A</option>
+        </select>
+
+        <select id="dateSort">
+          <option value="new">Newest</option>
+          <option value="old">Oldest</option>
+        </select>
+
+        <button class="success" id="clearBtn">Clear</button>
+      </div>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Subject</th>
+              <th>Blood</th>
+              <th>Image</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+
+      <div id="noResults" class="notfound" style="display:none;">No results found.</div>
+    </div>
+  </div>
+</div>
+
+<!-- VIEW MODAL -->
+<div id="viewModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-head">
+      <div class="modal-title">Full Details</div>
+      <button class="ghost" type="button" id="closeViewBtn">✕</button>
+    </div>
+    <div class="modal-body">
+      <img id="viewImg" class="bigimg" style="display:none;" alt="image">
+      <div class="grid" id="viewGrid"></div>
+      <div class="kv" style="margin-top:12px;">
+        <div class="k">Message</div>
+        <div class="v" id="viewMessage" style="white-space:pre-wrap;"></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="warning" id="editFromViewBtn" type="button">Edit</button>
+      <button class="danger" id="deleteFromViewBtn" type="button">Delete</button>
+      <button class="primary" id="doneViewBtn" type="button">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-head">
+      <div class="modal-title">Edit Details</div>
+      <button class="ghost" type="button" id="closeEditBtn">✕</button>
+    </div>
+
+    <form id="editForm">
+      <div class="modal-body">
+        <div class="grid">
+          <div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-bottom:6px;">Full Name</div>
+            <input id="editName" required>
+          </div>
+          <div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-bottom:6px;">Phone</div>
+            <input id="editPhone" required>
+          </div>
+
+          <div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-bottom:6px;">Email</div>
+            <input id="editEmail" type="email" required>
+          </div>
+          <div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-bottom:6px;">Subject</div>
+            <input id="editSubject">
+          </div>
+
+          <div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-bottom:6px;">Blood</div>
+            <select id="editBlood">
+              <option value="">—</option>
+              <option>A+</option><option>A-</option>
+              <option>B+</option><option>B-</option>
+              <option>AB+</option><option>AB-</option>
+              <option>O+</option><option>O-</option>
+            </select>
+          </div>
+          <div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-bottom:6px;">Image URL / Storage Path</div>
+            <input id="editImage" placeholder="https://... or gs://... or path">
+          </div>
+        </div>
+
+        <div style="margin-top:10px;">
+          <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-bottom:6px;">Message</div>
+          <textarea id="editMessage" placeholder="Message..."></textarea>
+        </div>
+      </div>
+
+      <div class="modal-foot">
+        <button class="ghost" type="button" id="cancelEditBtn">Cancel</button>
+        <button class="success" type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- DELETE CONFIRM MODAL -->
+<div id="confirmModal" class="modal">
+  <div class="modal-content" style="width:min(520px,100%);">
+    <div class="modal-head">
+      <div class="modal-title">Confirm Delete</div>
+      <button class="ghost" type="button" id="closeConfirmBtn">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="kv">
+        <div class="k">You are deleting</div>
+        <div class="v" id="confirmText"></div>
+      </div>
+      <div style="margin-top:10px;color:rgba(255,255,255,0.75);font-size:13px;">
+        This cannot be undone.
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="ghost" type="button" id="cancelDeleteBtn">Cancel</button>
+      <button class="danger" type="button" id="confirmDeleteBtn">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="admin.js"></script>
+</body>
+</html>
