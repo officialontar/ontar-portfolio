@@ -216,7 +216,6 @@ header {
   transform: rotate(20deg);
 }
 
-
 .nav-toggle-btn span {
   display: block;
   width: 25px;
@@ -430,48 +429,43 @@ body.light-mode .outline-btn:hover {
   }
 } */
 
-
-
-
 .floating-icon {
-    position: absolute;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: float 4s ease-in-out infinite;
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: float 4s ease-in-out infinite;
 }
-
 
 /* Top Left */
 .python {
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
 }
 
 /* Top Right */
 .Django {
-    top: 0;
-    right: 0;
-    transform: translate(50%, -50%);
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
 }
 
 /* Bottom Right */
 .Linux {
-    bottom: 0;
-    right: 0;
-    transform: translate(50%, 50%);
+  bottom: 0;
+  right: 0;
+  transform: translate(50%, 50%);
 }
-
 
 /* Bottom Left */
 .JavaScript {
-    bottom: 0;
-    left: 0;
-    transform: translate(-50%, 50%);
+  bottom: 0;
+  left: 0;
+  transform: translate(-50%, 50%);
 }
 
 @keyframes float {
@@ -479,10 +473,6 @@ body.light-mode .outline-btn:hover {
     transform: translateY(-12px);
   }
 }
-
-
-
-
 
 /* Fixed Typing Animation */
 .typing-wrapper {
@@ -578,7 +568,6 @@ body.light-mode .cursor {
   gap: 5px;
 }
 
-
 #menu-icon,
 #close-icon {
   position: absolute;
@@ -617,68 +606,64 @@ body.light-mode .cursor {
 /* Mobile View */
 
 @media (max-width: 992px) {
-
-
   /* ========================= */
-/* MOBILE NAV DROPDOWN STYLE */
-/* ========================= */
+  /* MOBILE NAV DROPDOWN STYLE */
+  /* ========================= */
 
-.navbar {
-  position: relative;
-}
+  .navbar {
+    position: relative;
+  }
 
-.nav-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  left: auto;
-  width: 220px;
-  background: var(--glass);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.35s ease;
-  padding: 0;
-  text-align: left;
-}
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: auto;
+    width: 220px;
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s ease;
+    padding: 0;
+    text-align: left;
+  }
 
-.nav-menu.show-menu {
-  max-height: 500px;
-  padding: 10px 0;
-}
+  .nav-menu.show-menu {
+    max-height: 500px;
+    padding: 10px 0;
+  }
 
-/* Vertical Menu Layout */
-.nav-list {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0;
-  padding: 0;
-}
+  /* Vertical Menu Layout */
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0;
+  }
 
-.nav-list li {
-  width: 100%;
-}
+  .nav-list li {
+    width: 100%;
+  }
 
-.nav-link {
-  display: block;
-  width: 100%;
-  padding: 12px 18px;
-  font-size: 0.95rem;
-}
+  .nav-link {
+    display: block;
+    width: 100%;
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
 
-.nav-link:hover {
-  background: rgba(0, 255, 195, 0.08);
-}
+  .nav-link:hover {
+    background: rgba(0, 255, 195, 0.08);
+  }
 
-/* Light mode fix */
-body.light-mode .nav-menu {
-  background: rgba(255, 255, 255, 0.95);
-}
-
-
+  /* Light mode fix */
+  body.light-mode .nav-menu {
+    background: rgba(255, 255, 255, 0.95);
+  }
 
   /* .nav-toggle-btn {
     display: block;
@@ -1235,11 +1220,6 @@ body.light-mode .read-btn.project-read-btn:hover {
   margin-bottom: 1rem;
 }
 
-
-
-
-
-
 /* ============================= */
 /* ===== FINAL CONTACT CSS ===== */
 /* ============================= */
@@ -1258,9 +1238,15 @@ body.light-mode .read-btn.project-read-btn:hover {
   text-align: center;
 }
 
-.c1 { color: var(--primary); }
-.c2 { color: var(--secondary); }
-.c3 { color: #ffb100; }
+.c1 {
+  color: var(--primary);
+}
+.c2 {
+  color: var(--secondary);
+}
+.c3 {
+  color: #ffb100;
+}
 
 .left-subtitle {
   margin-bottom: 18px;
@@ -1276,13 +1262,24 @@ body.light-mode .read-btn.project-read-btn:hover {
   color: #ffb100;
 }
 
-.contact-details { display: grid; gap: 12px; }
+.contact-details {
+  display: grid;
+  gap: 12px;
+}
 
-.detail-item { display: flex; gap: 12px; }
+.detail-item {
+  display: flex;
+  gap: 12px;
+}
 
-.detail-item i { color: var(--primary); }
+.detail-item i {
+  color: var(--primary);
+}
 
-.live-time-text { margin-top: 15px; font-weight: 600; }
+.live-time-text {
+  margin-top: 15px;
+  font-weight: 600;
+}
 
 .social-grid {
   display: grid;
@@ -1295,7 +1292,7 @@ body.light-mode .read-btn.project-read-btn:hover {
   width: 100%;
   max-width: 200px;
   height: 42px;
-  background: rgba(0,0,0,0.25);
+  background: rgba(0, 0, 0, 0.25);
   border: 1px solid var(--border-color);
   border-radius: 12px;
   display: flex;
@@ -1351,8 +1348,8 @@ body.light-mode .read-btn.project-read-btn:hover {
 .contact-form textarea {
   padding: 14px;
   border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.3);
   color: #00ffd5;
   outline: none;
   width: 100%;
@@ -1363,8 +1360,8 @@ body.light-mode .read-btn.project-read-btn:hover {
 .contact-form textarea {
   padding: 14px;
   border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.3);
   color: #00ffd5;
   outline: none;
 }
@@ -1405,9 +1402,9 @@ body.light-mode .read-btn.project-read-btn:hover {
 .btn-submit:hover {
   background: #009e73;
   box-shadow:
-    0 0 15px rgba(0,200,150,0.7),
-    0 0 30px rgba(0,200,150,0.6),
-    0 0 50px rgba(0,200,150,0.5);
+    0 0 15px rgba(0, 200, 150, 0.7),
+    0 0 30px rgba(0, 200, 150, 0.6),
+    0 0 50px rgba(0, 200, 150, 0.5);
   transform: translateY(-3px);
 }
 
@@ -1425,8 +1422,6 @@ body.light-mode .read-btn.project-read-btn:hover {
   animation: moveText 12s linear infinite;
 }
 
-
-
 .form-group {
   display: flex;
   flex-direction: column;
@@ -1443,19 +1438,23 @@ body.light-mode .read-btn.project-read-btn:hover {
   grid-column: 1 / -1;
 }
 
-
 @keyframes moveText {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 @media (max-width: 900px) {
-  .contact-grid { grid-template-columns: 1fr; }
-  .contact-form .form-grid { grid-template-columns: 1fr; }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-form .form-grid {
+    grid-template-columns: 1fr;
+  }
 }
-
-
-
 
 /* ============================= */
 /* ===== SUCCESS POPUP CSS ===== */
@@ -1489,8 +1488,8 @@ body.light-mode .read-btn.project-read-btn:hover {
   max-width: 500px;
   transform: scale(0.8);
   transition: 0.4s ease;
-  border: 1px solid rgba(0,255,200,0.3);
-  box-shadow: 0 0 40px rgba(0,255,200,0.3);
+  border: 1px solid rgba(0, 255, 200, 0.3);
+  box-shadow: 0 0 40px rgba(0, 255, 200, 0.3);
 }
 
 .popup-overlay.active .popup-box {
@@ -1522,12 +1521,8 @@ body.light-mode .read-btn.project-read-btn:hover {
 
 .popup-btn:hover {
   background: #009e73;
-  box-shadow: 0 0 20px rgba(0,200,150,0.7);
+  box-shadow: 0 0 20px rgba(0, 200, 150, 0.7);
 }
-
-
-
-
 
 .glass-footer {
   background: var(--glass);
@@ -1538,7 +1533,6 @@ body.light-mode .read-btn.project-read-btn:hover {
   font-size: 0.9rem;
   margin-top: 4rem;
 }
-
 
 /* --- RESPONSIVE --- */
 @media (max-width: 992px) {
@@ -1689,13 +1683,11 @@ body.light-mode .read-btn.project-read-btn:hover {
   }
 }
 
-
 /* ===============================
    HERO RESPONSIVE FIX
 ================================ */
 
 @media (max-width: 992px) {
-
   .hero-content {
     flex-direction: column-reverse;
     text-align: center;
@@ -1736,7 +1728,6 @@ body.light-mode .read-btn.project-read-btn:hover {
 }
 
 @media (max-width: 576px) {
-
   #typing-name {
     font-size: 1.9rem;
   }
@@ -1752,14 +1743,11 @@ body.light-mode .read-btn.project-read-btn:hover {
   }
 }
 
-
-
 /* ===============================
    CONTACT RESPONSIVE FIX
 ================================ */
 
 @media (max-width: 992px) {
-
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 25px;
@@ -1786,7 +1774,6 @@ body.light-mode .read-btn.project-read-btn:hover {
 }
 
 @media (max-width: 768px) {
-
   .contact-form .form-grid {
     grid-template-columns: 1fr;
   }
@@ -1801,7 +1788,6 @@ body.light-mode .read-btn.project-read-btn:hover {
 }
 
 @media (max-width: 576px) {
-
   .glass-container {
     padding: 1.5rem;
   }
@@ -1822,10 +1808,7 @@ body.light-mode .read-btn.project-read-btn:hover {
   }
 }
 
-
-
 @media (max-width: 576px) {
-
   .popup-box {
     width: 95%;
     padding: 25px;
@@ -1840,10 +1823,6 @@ body.light-mode .read-btn.project-read-btn:hover {
   }
 }
 
-
-
-
-
 /* --- RESPONSIVE --- */
 @media (max-width: 375px) {
 }
@@ -1855,8 +1834,6 @@ body.light-mode .read-btn.project-read-btn:hover {
 #typing-name {
   word-break: break-word;
 }
-
-
 
 /* =========================================
    CONTACT FINAL (CLEAN & PRODUCTION READY)
@@ -1889,7 +1866,7 @@ body.light-mode .read-btn.project-read-btn:hover {
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-direction: row;      /* always side by side */
+  flex-direction: row; /* always side by side */
 }
 
 .detail-item i {
@@ -1946,7 +1923,6 @@ body.light-mode .read-btn.project-read-btn:hover {
 ========================================= */
 
 @media (max-width: 992px) {
-
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 25px;
@@ -1962,7 +1938,6 @@ body.light-mode .read-btn.project-read-btn:hover {
 ========================================= */
 
 @media (max-width: 480px) {
-
   .contact-section .glass-container {
     padding: 1.2rem;
   }
@@ -2004,7 +1979,6 @@ body.light-mode .read-btn.project-read-btn:hover {
 ========================================= */
 
 @media (max-width: 360px) {
-
   .contact-section .glass-container {
     padding: 1rem;
   }
@@ -2048,7 +2022,6 @@ body.light-mode .read-btn.project-read-btn:hover {
 ========================================= */
 
 @media (max-width: 480px) {
-
   .typing-wrapper {
     white-space: normal;
   }
@@ -2061,16 +2034,15 @@ body.light-mode .read-btn.project-read-btn:hover {
   }
 }
 
-
 /* ===============================
    🌍 Intl Tel Input Dark Theme Fix
 ================================ */
 
 .iti__country-list {
-  background-color: #0f172a !important;   /* তোমার form এর dark bg */
-  color: #00f5d4 !important;              /* তোমার accent color */
+  background-color: #0f172a !important; /* তোমার form এর dark bg */
+  color: #00f5d4 !important; /* তোমার accent color */
   border-radius: 10px;
-  border: 1px solid rgba(0,255,195,0.2);
+  border: 1px solid rgba(0, 255, 195, 0.2);
 }
 
 .iti__country {
@@ -2078,7 +2050,7 @@ body.light-mode .read-btn.project-read-btn:hover {
 }
 
 .iti__country:hover {
-  background-color: rgba(0,255,195,0.1) !important;
+  background-color: rgba(0, 255, 195, 0.1) !important;
 }
 
 .iti__search-input {
@@ -2090,8 +2062,6 @@ body.light-mode .read-btn.project-read-btn:hover {
 .iti__selected-flag {
   background-color: transparent !important;
 }
-
-
 
 /* ===============================
    🤖 reCAPTCHA alignment

@@ -11,7 +11,7 @@ const firebaseConfig = {
   projectId: "ontar-portfolio",
   storageBucket: "ontar-portfolio.firebasestorage.app",
   messagingSenderId: "377626395117",
-  appId: "1:377626395117:web:eaa2fc5d435f244e51a7e4"
+  appId: "1:377626395117:web:eaa2fc5d435f244e51a7e4",
 };
 
 const app = initializeApp(firebaseConfig);

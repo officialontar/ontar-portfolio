@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
   // Prevent double execution if script loads twice
   if (window.__ONTAR_SCRIPT_INIT__) return;
   window.__ONTAR_SCRIPT_INIT__ = true;
@@ -15,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const titleEl = document.getElementById("title");
 
   if (nameEl && titleEl) {
-
     nameEl.textContent = "";
     titleEl.textContent = "";
 
@@ -24,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let phase = "typingName";
 
     function typeEffect() {
-
       if (phase === "typingName") {
         if (nameIndex < nameText.length) {
           nameEl.textContent += nameText[nameIndex++];
@@ -32,30 +29,22 @@ document.addEventListener("DOMContentLoaded", function () {
           phase = "typingTitle";
           return setTimeout(typeEffect, 500);
         }
-      }
-
-      else if (phase === "typingTitle") {
+      } else if (phase === "typingTitle") {
         if (titleIndex < titleText.length) {
           titleEl.textContent += titleText[titleIndex++];
         } else {
           phase = "pause";
           return setTimeout(typeEffect, 2000);
         }
-      }
-
-      else if (phase === "pause") {
+      } else if (phase === "pause") {
         phase = "deletingTitle";
-      }
-
-      else if (phase === "deletingTitle") {
+      } else if (phase === "deletingTitle") {
         if (titleIndex > 0) {
           titleEl.textContent = titleText.substring(0, --titleIndex);
         } else {
           phase = "deletingName";
         }
-      }
-
-      else if (phase === "deletingName") {
+      } else if (phase === "deletingName") {
         if (nameIndex > 0) {
           nameEl.textContent = nameText.substring(0, --nameIndex);
         } else {
@@ -78,14 +67,13 @@ document.addEventListener("DOMContentLoaded", function () {
   function scrollActive() {
     const scrollY = window.pageYOffset;
 
-    sections.forEach(current => {
-
+    sections.forEach((current) => {
       const sectionHeight = current.offsetHeight;
       const sectionTop = current.offsetTop - 100;
       const sectionId = current.getAttribute("id");
 
       const scrollLink = document.querySelector(
-        ".nav-menu a[href*=" + sectionId + "]"
+        ".nav-menu a[href*=" + sectionId + "]",
       );
 
       if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
@@ -106,7 +94,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const body = document.body;
 
   if (themeBtn) {
-
     const icon = themeBtn.querySelector("i");
 
     if (localStorage.getItem("theme") === "light") {
@@ -115,7 +102,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     themeBtn.addEventListener("click", function () {
-
       body.classList.toggle("light-mode");
 
       if (body.classList.contains("light-mode")) {
@@ -137,13 +123,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const navLinks = document.querySelectorAll(".nav-link");
 
   if (navToggle && navMenu) {
-
     navToggle.addEventListener("click", () => {
       navToggle.classList.toggle("active");
       navMenu.classList.toggle("show-menu");
     });
 
-    navLinks.forEach(link => {
+    navLinks.forEach((link) => {
       link.addEventListener("click", () => {
         navMenu.classList.remove("show-menu");
         navToggle.classList.remove("active");
@@ -158,7 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const canvas = document.getElementById("canvas1");
 
   if (canvas) {
-
     const ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -249,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
       minute: "2-digit",
       second: "2-digit",
       hour12: false,
-      timeZone: "Asia/Dhaka"
+      timeZone: "Asia/Dhaka",
     };
 
     liveEl.textContent =
@@ -339,156 +323,158 @@ document.addEventListener("DOMContentLoaded", function () {
   //   document.getElementById("successPopup")?.classList.remove("active");
   // };
 
-
   function showPopup() {
-  const popup = document.getElementById("successPopup");
-  const titleEl = document.getElementById("popupTitle");
-  const messageEl = document.getElementById("popupMessage");
+    const popup = document.getElementById("successPopup");
+    const titleEl = document.getElementById("popupTitle");
+    const messageEl = document.getElementById("popupMessage");
 
-  if (!popup) return;
+    if (!popup) return;
 
-  popup.classList.add("active");
+    popup.classList.add("active");
 
-  const titleText = "🎉 Thank You!";
-  const messageText =
-    "Your message has been successfully submitted. I will contact you very soon.";
+    const titleText = "🎉 Thank You!";
+    const messageText =
+      "Your message has been successfully submitted. I will contact you very soon.";
 
-  titleEl.textContent = "";
-  messageEl.textContent = "";
+    titleEl.textContent = "";
+    messageEl.textContent = "";
 
-  let i = 0;
-  let j = 0;
+    let i = 0;
+    let j = 0;
 
-  function typeTitle() {
-    if (i < titleText.length) {
-      titleEl.textContent += titleText[i++];
-      setTimeout(typeTitle, 15);   // 🔥 ultra fast
-    } else {
-      setTimeout(typeMessage, 80); // small smooth gap
+    function typeTitle() {
+      if (i < titleText.length) {
+        titleEl.textContent += titleText[i++];
+        setTimeout(typeTitle, 15); // 🔥 ultra fast
+      } else {
+        setTimeout(typeMessage, 80); // small smooth gap
+      }
     }
+
+    function typeMessage() {
+      if (j < messageText.length) {
+        messageEl.textContent += messageText[j++];
+        setTimeout(typeMessage, 10); // 🔥 very fast
+      }
+    }
+
+    typeTitle();
   }
 
-  function typeMessage() {
-    if (j < messageText.length) {
-      messageEl.textContent += messageText[j++];
-      setTimeout(typeMessage, 10);  // 🔥 very fast
-    }
-  }
+  window.closePopup = function () {
+    document.getElementById("successPopup")?.classList.remove("active");
+  };
 
-  typeTitle();
-}
-
- /* ===============================
+  /* ===============================
    1️⃣1️⃣ Cloudinary + Firestore Submit
 ================================ */
 
-const form = document.getElementById("contactForm");
+  const form = document.getElementById("contactForm");
 
-if (form) {
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
+  if (form) {
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-    // ✅ reCAPTCHA validation
-    const recaptchaResponse = grecaptcha.getResponse();
-    if (!recaptchaResponse) {
-      alert("Please verify that you are not a robot.");
-      return;
-    }
+      // ✅ reCAPTCHA validation
+      const recaptchaResponse = grecaptcha.getResponse();
+      if (!recaptchaResponse) {
+        alert("Please verify that you are not a robot.");
+        return;
+      }
 
+      const fullName = document.getElementById("full_name").value.trim();
+      const subject = document.getElementById("subject").value.trim();
+      const phoneInput = document.getElementById("phone");
+      const emailInput = document.getElementById("email");
 
-    const fullName = document.getElementById("full_name").value.trim();
-    const subject = document.getElementById("subject").value.trim();
-    const phoneInput = document.getElementById("phone");
-    const emailInput = document.getElementById("email");
+      const phone = phoneInput.value.trim();
+      const email = emailInput.value.trim();
+      const bloodGroup = document.getElementById("blood_group").value;
+      const message = document.getElementById("message").value.trim();
+      const file = document.getElementById("attachment").files[0];
 
-    const phone = phoneInput.value.trim();
-    const email = emailInput.value.trim();
-    const bloodGroup = document.getElementById("blood_group").value;
-    const message = document.getElementById("message").value.trim();
-    const file = document.getElementById("attachment").files[0];
+      const emailError = document.getElementById("emailError");
+      const phoneError = document.getElementById("phoneError");
 
-    const emailError = document.getElementById("emailError");
-    const phoneError = document.getElementById("phoneError");
+      // ✅ Email Validation
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+      if (!emailOk) {
+        if (emailError) emailError.style.display = "block";
+        alert("Please enter a valid email address.");
+        return;
+      } else {
+        if (emailError) emailError.style.display = "none";
+      }
 
-    // ✅ Email Validation
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-    if (!emailOk) {
-      if (emailError) emailError.style.display = "block";
-      alert("Please enter a valid email address.");
-      return;
-    } else {
-      if (emailError) emailError.style.display = "none";
-    }
+      // ✅ Phone Validation (intl-tel-input required)
+      // ✅ Phone Validation
+      if (!iti || !iti.isValidNumber()) {
+        if (phoneError) phoneError.style.display = "block";
+        alert("Please enter a valid phone number.");
+        return;
+      } else {
+        if (phoneError) phoneError.style.display = "none";
+      }
 
-    // ✅ Phone Validation (intl-tel-input required)
-    // ✅ Phone Validation
-    if (!iti || !iti.isValidNumber()) {
-      if (phoneError) phoneError.style.display = "block";
-      alert("Please enter a valid phone number.");
-      return;
-    } else {
-      if (phoneError) phoneError.style.display = "none";
-    }
+      const fullPhone = iti.getNumber(); // E.164 format
 
-    const fullPhone = iti.getNumber(); // E.164 format
+      if (!file) {
+        alert("Please select a file.");
+        return;
+      }
 
-    if (!file) {
-      alert("Please select a file.");
-      return;
-    }
+      if (typeof db === "undefined" || typeof firebase === "undefined") {
+        alert(
+          "Firebase is not initialized. Please check Firebase CDN scripts.",
+        );
+        return;
+      }
 
-    if (typeof db === "undefined" || typeof firebase === "undefined") {
-      alert("Firebase is not initialized. Please check Firebase CDN scripts.");
-      return;
-    }
+      try {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", "ontar_unsigned");
 
-    try {
+        const cloudName = "dfshwrf62";
 
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "ontar_unsigned");
+        const response = await fetch(
+          `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
+          {
+            method: "POST",
+            body: formData,
+          },
+        );
 
-      const cloudName = "dfshwrf62";
+        const data = await response.json();
+        const imageUrl = data.secure_url;
 
-      const response = await fetch(
-        `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
-        {
-          method: "POST",
-          body: formData,
+        if (!response.ok || !imageUrl) {
+          throw new Error(data?.error?.message || "Cloudinary upload failed");
         }
-      );
 
-      const data = await response.json();
-      const imageUrl = data.secure_url;
+        await db.collection("contacts").add({
+          fullName,
+          phone: fullPhone,
+          email,
+          subject,
+          bloodGroup,
+          message,
+          imageUrl,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        });
 
-      if (!response.ok || !imageUrl) {
-        throw new Error(data?.error?.message || "Cloudinary upload failed");
+        showPopup();
+        form.reset();
+
+        if (previewImage) {
+          previewImage.style.display = "none";
+        }
+      } catch (error) {
+        console.error(error);
+        alert("Something went wrong!");
       }
-
-      await db.collection("contacts").add({
-        fullName,
-        phone: fullPhone,
-        email,
-        subject,
-        bloodGroup,
-        message,
-        imageUrl,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      });
-
-      showPopup();
-      form.reset();
-
-      if (previewImage) {
-        previewImage.style.display = "none";
-      }
-
-    } catch (error) {
-      console.error(error);
-      alert("Something went wrong!");
-    }
-  });
-}
+    });
+  }
 
   /* ===============================
      1️⃣2️⃣ Email + International Phone Validation
@@ -506,13 +492,13 @@ if (form) {
       initialCountry: "auto",
       geoIpLookup: function (callback) {
         fetch("https://ipapi.co/json")
-          .then(res => res.json())
-          .then(data => callback(data.country_code))
+          .then((res) => res.json())
+          .then((data) => callback(data.country_code))
           .catch(() => callback("us"));
       },
-      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/utils.js",
-      separateDialCode: true
+      utilsScript:
+        "https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/utils.js",
+      separateDialCode: true,
     });
   }
-
 });

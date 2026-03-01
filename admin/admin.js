@@ -83,65 +83,80 @@ let deleteTargetId = null;
 const imageCache = new Map();
 
 /* -------------------- Helpers -------------------- */
-function openModal(m){ m.classList.add("open"); }
-function closeModal(m){ m.classList.remove("open"); }
+function openModal(m) {
+  m.classList.add("open");
+}
+function closeModal(m) {
+  m.classList.remove("open");
+}
 
-function safe(v){ return (v ?? "").toString().trim(); }
-function lower(v){ return safe(v).toLowerCase(); }
+function safe(v) {
+  return (v ?? "").toString().trim();
+}
+function lower(v) {
+  return safe(v).toLowerCase();
+}
 
 /* === FORMAT CREATED DATE === */
-function formatDate(timestamp){
-  if(!timestamp?.seconds) return "—";
+function formatDate(timestamp) {
+  if (!timestamp?.seconds) return "—";
 
   const date = new Date(timestamp.seconds * 1000);
 
   return date.toLocaleString("en-GB", {
-    day:"2-digit",
-    month:"short",
-    year:"numeric",
-    hour:"2-digit",
-    minute:"2-digit",
-    second:"2-digit",
-    hour12:true
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
   });
 }
 
-function formatFullDate(timestamp){
-  if(!timestamp?.seconds) return "—";
+function formatFullDate(timestamp) {
+  if (!timestamp?.seconds) return "—";
 
   const date = new Date(timestamp.seconds * 1000);
 
   return date.toLocaleString("en-GB", {
-    day:"2-digit",
-    month:"long",   // 🔥 এখানে long
-    year:"numeric",
-    hour:"2-digit",
-    minute:"2-digit",
-    second:"2-digit",
-    hour12:true
+    day: "2-digit",
+    month: "long", // 🔥 এখানে long
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
   });
 }
 
-function getCreatedSeconds(x){
-
+function getCreatedSeconds(x) {
   if (x?.createdAt?.seconds) return x.createdAt.seconds;
   return 0;
 }
 
 /* Universal field mapping (আপনার DB field নাম যাই থাকুক) */
-function normalize(item){
+function normalize(item) {
   const name = item.name || item.fullName || item.full_name || "";
-    const subject = item.subject || "";
-  const phone = item.phone || item.mobile || item.mobileNumber || item.mobile_number || "";
+  const subject = item.subject || "";
+  const phone =
+    item.phone || item.mobile || item.mobileNumber || item.mobile_number || "";
   const email = item.email || "";
   const blood = item.blood || item.bloodGroup || item.blood_group || "";
   const message = item.message || item.msg || "";
-  const imageRaw = item.image || item.imageUrl || item.profile_pic || item.file || item.fileUrl || item.photo || "";
+  const imageRaw =
+    item.image ||
+    item.imageUrl ||
+    item.profile_pic ||
+    item.file ||
+    item.fileUrl ||
+    item.photo ||
+    "";
   return { name, subject, phone, email, blood, message, imageRaw };
 }
 
 /* ---- Image URL Resolver (http/https OR gs:// OR path) ---- */
-async function resolveImageUrl(docId, imageRaw){
+async function resolveImageUrl(docId, imageRaw) {
   const raw = safe(imageRaw);
   if (!raw) return "";
 
@@ -149,17 +164,21 @@ async function resolveImageUrl(docId, imageRaw){
   if (imageCache.has(docId)) return imageCache.get(docId);
 
   // if already http(s) / data url
-  if (raw.startsWith("http://") || raw.startsWith("https://") || raw.startsWith("data:")) {
+  if (
+    raw.startsWith("http://") ||
+    raw.startsWith("https://") ||
+    raw.startsWith("data:")
+  ) {
     imageCache.set(docId, raw);
     return raw;
   }
 
   // if gs:// OR storage path
-  try{
+  try {
     const url = await getDownloadURL(ref(storage, raw));
     imageCache.set(docId, url);
     return url;
-  }catch(e){
+  } catch (e) {
     // fallback: no image
     imageCache.set(docId, "");
     return "";
@@ -167,17 +186,22 @@ async function resolveImageUrl(docId, imageRaw){
 }
 
 /* ---- Try delete storage file when delete doc ---- */
-async function tryDeleteStorageFile(imageRaw){
+async function tryDeleteStorageFile(imageRaw) {
   const raw = safe(imageRaw);
   if (!raw) return;
 
   // If imageRaw is http(s) download url -> we cannot easily delete unless you saved storage path
   // If imageRaw is gs:// or path -> can delete
-  if (raw.startsWith("http://") || raw.startsWith("https://") || raw.startsWith("data:")) return;
+  if (
+    raw.startsWith("http://") ||
+    raw.startsWith("https://") ||
+    raw.startsWith("data:")
+  )
+    return;
 
-  try{
+  try {
     await deleteObject(ref(storage, raw));
-  }catch(e){
+  } catch (e) {
     // ignore (file may not exist / permission)
   }
 }
@@ -186,60 +210,66 @@ async function tryDeleteStorageFile(imageRaw){
 await setPersistence(auth, browserSessionPersistence);
 
 // Force logout on each page open/reload (you requested)
-try { await signOut(auth); } catch(e){}
+try {
+  await signOut(auth);
+} catch (e) {}
 
 /* Login form */
-loginForm.addEventListener("submit", async (e)=>{
+loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   loginError.style.display = "none";
-  try{
+  try {
     await signInWithEmailAndPassword(auth, email.value, password.value);
-  }catch(err){
+  } catch (err) {
     loginError.style.display = "block";
   }
 });
 
-clearLoginBtn.addEventListener("click", ()=>{
+clearLoginBtn.addEventListener("click", () => {
   email.value = "";
   password.value = "";
   loginError.style.display = "none";
 });
 
-logoutBtn.addEventListener("click", async ()=>{
+logoutBtn.addEventListener("click", async () => {
   await signOut(auth);
 });
 
-onAuthStateChanged(auth, (user)=>{
-  if(user){
+onAuthStateChanged(auth, (user) => {
+  if (user) {
     loginSection.style.display = "none";
     dashboard.style.display = "block";
     startRealtime();
-  }else{
+  } else {
     loginSection.style.display = "block";
     dashboard.style.display = "none";
   }
 });
 
 /* -------------------- Firestore realtime -------------------- */
-function startRealtime(){
+function startRealtime() {
   metaText.textContent = "Realtime enabled • loading…";
-  onSnapshot(collection(db, "contacts"), (snap)=>{
-    allData = [];
-    imageCache.clear();
+  onSnapshot(
+    collection(db, "contacts"),
+    (snap) => {
+      allData = [];
+      imageCache.clear();
 
-    snap.forEach(d=>{
-      allData.push({ id: d.id, ...d.data() });
-    });
+      snap.forEach((d) => {
+        allData.push({ id: d.id, ...d.data() });
+      });
 
-    metaText.textContent = `Realtime enabled • ${allData.length} total submissions`;
-    render();
-  }, ()=>{
-    metaText.textContent = "Failed to load. Check Firestore rules/auth.";
-  });
+      metaText.textContent = `Realtime enabled • ${allData.length} total submissions`;
+      render();
+    },
+    () => {
+      metaText.textContent = "Failed to load. Check Firestore rules/auth.";
+    },
+  );
 }
 
 /* -------------------- Render + Search/Filter/Sort -------------------- */
-function render(){
+function render() {
   const q = lower(searchInput.value);
   const blood = safe(bloodFilter.value);
   const ns = safe(nameSort.value); // az / za
@@ -248,8 +278,8 @@ function render(){
   let list = [...allData];
 
   // filter by search (name/email/phone/blood/subject)
-  if(q){
-    list = list.filter(item=>{
+  if (q) {
+    list = list.filter((item) => {
       const n = normalize(item);
       const hay = `${lower(n.name)} ${lower(n.email)} ${lower(n.phone)} ${lower(n.blood)} ${lower(n.subject)}`;
       return hay.includes(q);
@@ -257,8 +287,8 @@ function render(){
   }
 
   // filter blood
-  if(blood){
-    list = list.filter(item=>{
+  if (blood) {
+    list = list.filter((item) => {
       const n = normalize(item);
       return safe(n.blood) === blood;
     });
@@ -267,22 +297,21 @@ function render(){
   /* ✅ FIX: date sort first, name sort last
      কারণ আগে name sort করার পরে date sort আবার override করে দিচ্ছিল
      এজন্য Z→A ঠিকভাবে কাজ করত না */
-  if(ds === "new"){
-    list.sort((a,b)=>getCreatedSeconds(b) - getCreatedSeconds(a));
-  }else if(ds === "old"){
-    list.sort((a,b)=>getCreatedSeconds(a) - getCreatedSeconds(b));
+  if (ds === "new") {
+    list.sort((a, b) => getCreatedSeconds(b) - getCreatedSeconds(a));
+  } else if (ds === "old") {
+    list.sort((a, b) => getCreatedSeconds(a) - getCreatedSeconds(b));
   }
 
   // sort name (case-insensitive, stable)
-  if(ns === "az"){
-    list.sort((a,b)=>{
+  if (ns === "az") {
+    list.sort((a, b) => {
       const an = (normalize(a).name || "").toLowerCase();
       const bn = (normalize(b).name || "").toLowerCase();
       return an.localeCompare(bn, undefined, { sensitivity: "base" });
     });
-  }
-  else if(ns === "za"){
-    list.sort((a,b)=>{
+  } else if (ns === "za") {
+    list.sort((a, b) => {
       const an = (normalize(a).name || "").toLowerCase();
       const bn = (normalize(b).name || "").toLowerCase();
       return bn.localeCompare(an, undefined, { sensitivity: "base" });
@@ -291,14 +320,14 @@ function render(){
 
   tableBody.innerHTML = "";
 
-  if(list.length === 0){
+  if (list.length === 0) {
     noResults.style.display = "block";
     return;
   }
   noResults.style.display = "none";
 
   // Render rows
-  for(const item of list){
+  for (const item of list) {
     const n = normalize(item);
 
     const tr = document.createElement("tr");
@@ -325,15 +354,15 @@ function render(){
     tableBody.appendChild(tr);
 
     // async image resolve
-    (async ()=>{
+    (async () => {
       const url = await resolveImageUrl(item.id, n.imageRaw);
       const img = document.getElementById(`img_${item.id}`);
       const txt = document.getElementById(`imgtxt_${item.id}`);
-      if(url){
+      if (url) {
         img.src = url;
         img.style.display = "inline-block";
         txt.style.display = "none";
-      }else{
+      } else {
         img.style.display = "none";
         txt.style.display = "inline";
       }
@@ -342,13 +371,13 @@ function render(){
 }
 
 /* Escape HTML to avoid issues */
-function escapeHtml(str){
+function escapeHtml(str) {
   return safe(str)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
 /* Events for search/filter/sort/clear */
@@ -357,7 +386,7 @@ bloodFilter.addEventListener("change", render);
 nameSort.addEventListener("change", render);
 dateSort.addEventListener("change", render);
 
-clearBtn.addEventListener("click", ()=>{
+clearBtn.addEventListener("click", () => {
   searchInput.value = "";
   bloodFilter.value = "";
   nameSort.value = "";
@@ -366,23 +395,23 @@ clearBtn.addEventListener("click", ()=>{
 });
 
 /* Table action delegation */
-tableBody.addEventListener("click", (e)=>{
+tableBody.addEventListener("click", (e) => {
   const btn = e.target.closest("button");
-  if(!btn) return;
+  if (!btn) return;
 
   const act = btn.dataset.act;
   const id = btn.dataset.id;
-  if(!act || !id) return;
+  if (!act || !id) return;
 
-  if(act === "view") openView(id);
-  if(act === "edit") openEdit(id);
-  if(act === "delete") askDelete(id);
+  if (act === "view") openView(id);
+  if (act === "edit") openEdit(id);
+  if (act === "delete") askDelete(id);
 });
 
 /* -------------------- View Modal -------------------- */
-async function openView(id){
-  const item = allData.find(x=>x.id===id);
-  if(!item) return;
+async function openView(id) {
+  const item = allData.find((x) => x.id === id);
+  if (!item) return;
 
   selectedId = id;
   selectedItem = item;
@@ -390,10 +419,10 @@ async function openView(id){
   const n = normalize(item);
   const imgUrl = await resolveImageUrl(id, n.imageRaw);
 
-  if(imgUrl){
+  if (imgUrl) {
     viewImg.src = imgUrl;
     viewImg.style.display = "block";
-  }else{
+  } else {
     viewImg.src = "";
     viewImg.style.display = "none";
   }
@@ -407,50 +436,56 @@ async function openView(id){
     ["Created Date", formatFullDate(item.createdAt)],
   ];
 
-  viewGrid.innerHTML = rows.map(([k,v])=>`
+  viewGrid.innerHTML = rows
+    .map(
+      ([k, v]) => `
     <div class="kv">
       <div class="k">${escapeHtml(k)}</div>
       <div class="v">${escapeHtml(v)}</div>
     </div>
-  `).join("");
+  `,
+    )
+    .join("");
 
   viewMessage.textContent = n.message || "—";
 
   openModal(viewModal);
 }
 
-function closeView(){
+function closeView() {
   closeModal(viewModal);
 }
 
 /* ✅ FIX: close button ensure always works */
 closeViewBtn.addEventListener("click", closeView);
 doneViewBtn.addEventListener("click", closeView);
-viewModal.addEventListener("click",(e)=>{ if(e.target === viewModal) closeView(); });
+viewModal.addEventListener("click", (e) => {
+  if (e.target === viewModal) closeView();
+});
 
 /* ✅ ADD: ESC key to close view modal (extra smooth, doesn’t break anything) */
-document.addEventListener("keydown",(e)=>{
-  if(e.key === "Escape" && viewModal.classList.contains("open")){
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && viewModal.classList.contains("open")) {
     closeView();
   }
 });
 
-editFromViewBtn.addEventListener("click", ()=>{
-  if(!selectedId) return;
+editFromViewBtn.addEventListener("click", () => {
+  if (!selectedId) return;
   closeView();
   openEdit(selectedId);
 });
 
-deleteFromViewBtn.addEventListener("click", ()=>{
-  if(!selectedId) return;
+deleteFromViewBtn.addEventListener("click", () => {
+  if (!selectedId) return;
   closeView();
   askDelete(selectedId);
 });
 
 /* -------------------- Edit Modal -------------------- */
-function openEdit(id){
-  const item = allData.find(x=>x.id===id);
-  if(!item) return;
+function openEdit(id) {
+  const item = allData.find((x) => x.id === id);
+  if (!item) return;
 
   selectedId = id;
   selectedItem = item;
@@ -468,16 +503,18 @@ function openEdit(id){
   openModal(editModal);
 }
 
-function closeEdit(){
+function closeEdit() {
   closeModal(editModal);
 }
 closeEditBtn.addEventListener("click", closeEdit);
 cancelEditBtn.addEventListener("click", closeEdit);
-editModal.addEventListener("click",(e)=>{ if(e.target === editModal) closeEdit(); });
+editModal.addEventListener("click", (e) => {
+  if (e.target === editModal) closeEdit();
+});
 
-editForm.addEventListener("submit", async (e)=>{
+editForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  if(!selectedId) return;
+  if (!selectedId) return;
 
   // We save normalized standard keys (Best Practice)
   const payload = {
@@ -490,18 +527,18 @@ editForm.addEventListener("submit", async (e)=>{
     image: safe(editImage.value),
   };
 
-  try{
+  try {
     await updateDoc(doc(db, "contacts", selectedId), payload);
     closeEdit();
-  }catch(err){
+  } catch (err) {
     alert("Update failed. Check Firestore rules.");
   }
 });
 
 /* -------------------- Delete Confirm -------------------- */
-function askDelete(id){
-  const item = allData.find(x=>x.id===id);
-  if(!item) return;
+function askDelete(id) {
+  const item = allData.find((x) => x.id === id);
+  if (!item) return;
 
   deleteTargetId = id;
   const n = normalize(item);
@@ -509,58 +546,68 @@ function askDelete(id){
   openModal(confirmModal);
 }
 
-function closeConfirm(){
+function closeConfirm() {
   closeModal(confirmModal);
   deleteTargetId = null;
 }
 
 closeConfirmBtn.addEventListener("click", closeConfirm);
 cancelDeleteBtn.addEventListener("click", closeConfirm);
-confirmModal.addEventListener("click",(e)=>{ if(e.target === confirmModal) closeConfirm(); });
+confirmModal.addEventListener("click", (e) => {
+  if (e.target === confirmModal) closeConfirm();
+});
 
-confirmDeleteBtn.addEventListener("click", async ()=>{
-  if(!deleteTargetId) return;
+confirmDeleteBtn.addEventListener("click", async () => {
+  if (!deleteTargetId) return;
 
-  const item = allData.find(x=>x.id===deleteTargetId);
+  const item = allData.find((x) => x.id === deleteTargetId);
   const n = item ? normalize(item) : null;
 
-  try{
+  try {
     await deleteDoc(doc(db, "contacts", deleteTargetId));
-    if(n) await tryDeleteStorageFile(n.imageRaw);
+    if (n) await tryDeleteStorageFile(n.imageRaw);
     closeConfirm();
-  }catch(err){
+  } catch (err) {
     alert("Delete failed. Check Firestore/Storage rules.");
   }
 });
 
 /* -------------------- CSV Export -------------------- */
-exportBtn.addEventListener("click", ()=>{
+exportBtn.addEventListener("click", () => {
   // export current filtered view (based on current UI filters)
   const q = lower(searchInput.value);
   const blood = safe(bloodFilter.value);
 
   let list = [...allData];
 
-  if(q){
-    list = list.filter(item=>{
+  if (q) {
+    list = list.filter((item) => {
       const n = normalize(item);
       const hay = `${lower(n.name)} ${lower(n.subject)} ${lower(n.email)} ${lower(n.phone)} ${lower(n.blood)}`;
       return hay.includes(q);
     });
   }
-  if(blood){
-    list = list.filter(item=>{
+  if (blood) {
+    list = list.filter((item) => {
       const n = normalize(item);
       return safe(n.blood) === blood;
     });
   }
 
   let csv = "Name,Subject,Email,Phone,Blood,Message,Image\n";
-  for(const item of list){
+  for (const item of list) {
     const n = normalize(item);
     const row = [
-      n.name, n.subject, n.email, n.phone, n.blood, n.message, n.imageRaw
-    ].map(v => `"${safe(v).replaceAll('"','""')}"`).join(",");
+      n.name,
+      n.subject,
+      n.email,
+      n.phone,
+      n.blood,
+      n.message,
+      n.imageRaw,
+    ]
+      .map((v) => `"${safe(v).replaceAll('"', '""')}"`)
+      .join(",");
     csv += row + "\n";
   }
 
