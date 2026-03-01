@@ -2005,3 +2005,53 @@ body.light-mode .read-btn.project-read-btn:hover {
     max-width: 100%;
   }
 }
+
+
+/* ===============================
+   🌍 Intl Tel Input Dark Theme Fix
+================================ */
+
+.iti__country-list {
+  background-color: #0f172a !important;   /* তোমার form এর dark bg */
+  color: #00f5d4 !important;              /* তোমার accent color */
+  border-radius: 10px;
+  border: 1px solid rgba(0,255,195,0.2);
+}
+
+.iti__country {
+  color: #00f5d4 !important;
+}
+
+.iti__country:hover {
+  background-color: rgba(0,255,195,0.1) !important;
+}
+
+.iti__search-input {
+  background-color: #0f172a !important;
+  color: #00f5d4 !important;
+  border: none;
+}
+
+.iti__selected-flag {
+  background-color: transparent !important;
+}
+
+
+
+/* ===============================
+   🤖 reCAPTCHA alignment
+================================ */
+
+.recaptcha-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .g-recaptcha {
+    transform: scale(0.9);
+    transform-origin: center;
+  }
+}

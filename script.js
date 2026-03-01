@@ -382,7 +382,8 @@ if (form) {
     }
 
     // ✅ Phone Validation (intl-tel-input required)
-    if (typeof iti === "undefined" || !iti.isValidNumber()) {
+    // ✅ Phone Validation
+    if (!iti || !iti.isValidNumber()) {
       if (phoneError) phoneError.style.display = "block";
       alert("Please enter a valid phone number.");
       return;
@@ -390,7 +391,7 @@ if (form) {
       if (phoneError) phoneError.style.display = "none";
     }
 
-    const fullPhone = iti.getNumber(); // Global E.164 format
+    const fullPhone = iti.getNumber(); // E.164 format
 
     if (!file) {
       alert("Please select a file.");
