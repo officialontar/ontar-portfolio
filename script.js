@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (nameEl && titleEl) {
 
-    // Clear once before start (prevents duplicate text)
     nameEl.textContent = "";
     titleEl.textContent = "";
 
@@ -70,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
     typeEffect();
   }
 
-
   /* ===============================
      2️⃣ Active Scroll Link
   ================================ */
@@ -99,7 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   window.addEventListener("scroll", scrollActive);
-
 
   /* ===============================
      3️⃣ Theme Toggle
@@ -131,7 +128,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-
   /* ===============================
      4️⃣ Mobile Menu Toggle
   ================================ */
@@ -154,7 +150,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
-
 
   /* ===============================
      5️⃣ Particle Background
@@ -225,7 +220,6 @@ document.addEventListener("DOMContentLoaded", function () {
     animate();
   }
 
-
   /* ===============================
      6️⃣ Footer Year
   ================================ */
@@ -234,7 +228,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
-
 
   /* ===============================
      7️⃣ Live Time (Bangladesh)
@@ -267,7 +260,6 @@ document.addEventListener("DOMContentLoaded", function () {
   updateTime();
   setInterval(updateTime, 1000);
 
-
   /* ===============================
      8️⃣ Moving Text Restart
   ================================ */
@@ -279,10 +271,10 @@ document.addEventListener("DOMContentLoaded", function () {
     movingSpan.style.animation = "";
   }
 
-
   /* ===============================
      9️⃣ Image Preview Before Upload
   ================================ */
+
   const fileInput = document.getElementById("attachment");
   const previewImage = document.getElementById("previewImage");
 
@@ -302,13 +294,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-
   /* ===============================
      🔟 SUCCESS POPUP WITH TYPING
   ================================ */
 
   function showPopup() {
-
     const popup = document.getElementById("successPopup");
     const titleEl = document.getElementById("popupTitle");
     const messageEl = document.getElementById("popupMessage");
@@ -349,82 +339,139 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("successPopup")?.classList.remove("active");
   };
 
+ /* ===============================
+   1️⃣1️⃣ Cloudinary + Firestore Submit
+================================ */
+
+const form = document.getElementById("contactForm");
+
+if (form) {
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    // ✅ reCAPTCHA validation
+    const recaptchaResponse = grecaptcha.getResponse();
+    if (!recaptchaResponse) {
+      alert("Please verify that you are not a robot.");
+      return;
+    }
+
+
+    const fullName = document.getElementById("full_name").value.trim();
+    const phoneInput = document.getElementById("phone");
+    const emailInput = document.getElementById("email");
+
+    const phone = phoneInput.value.trim();
+    const email = emailInput.value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const bloodGroup = document.getElementById("blood_group").value;
+    const message = document.getElementById("message").value.trim();
+    const file = document.getElementById("attachment").files[0];
+
+    const emailError = document.getElementById("emailError");
+    const phoneError = document.getElementById("phoneError");
+
+    // ✅ Email Validation
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    if (!emailOk) {
+      if (emailError) emailError.style.display = "block";
+      alert("Please enter a valid email address.");
+      return;
+    } else {
+      if (emailError) emailError.style.display = "none";
+    }
+
+    // ✅ Phone Validation (intl-tel-input required)
+    if (typeof iti === "undefined" || !iti.isValidNumber()) {
+      if (phoneError) phoneError.style.display = "block";
+      alert("Please enter a valid phone number.");
+      return;
+    } else {
+      if (phoneError) phoneError.style.display = "none";
+    }
+
+    const fullPhone = iti.getNumber(); // Global E.164 format
+
+    if (!file) {
+      alert("Please select a file.");
+      return;
+    }
+
+    if (typeof db === "undefined" || typeof firebase === "undefined") {
+      alert("Firebase is not initialized. Please check Firebase CDN scripts.");
+      return;
+    }
+
+    try {
+
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "ontar_unsigned");
+
+      const cloudName = "dfshwrf62";
+
+      const response = await fetch(
+        `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await response.json();
+      const imageUrl = data.secure_url;
+
+      if (!response.ok || !imageUrl) {
+        throw new Error(data?.error?.message || "Cloudinary upload failed");
+      }
+
+      await db.collection("contacts").add({
+        fullName,
+        phone: fullPhone,
+        email,
+        subject,
+        bloodGroup,
+        message,
+        imageUrl,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+
+      showPopup();
+      form.reset();
+
+      if (previewImage) {
+        previewImage.style.display = "none";
+      }
+
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong!");
+    }
+  });
+}
 
   /* ===============================
-     1️⃣1️⃣ Cloudinary + Firestore Submit
+     1️⃣2️⃣ Email + International Phone Validation
   ================================ */
 
-  const form = document.getElementById("contactForm");
+  const phoneInput = document.querySelector("#phone");
+  const emailInput = document.querySelector("#email");
+  const phoneError = document.getElementById("phoneError");
+  const emailError = document.getElementById("emailError");
 
-  if (form) {
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
+  let iti = null;
 
-      const fullName = document.getElementById("full_name").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const subject = document.getElementById("subject").value.trim();
-      const bloodGroup = document.getElementById("blood_group").value;
-      const message = document.getElementById("message").value.trim();
-      const file = document.getElementById("attachment").files[0];
-
-      if (!file) {
-        alert("Please select a file.");
-        return;
-      }
-
-      // Ensure Firebase db exists (prevents silent crash)
-      if (typeof db === "undefined" || typeof firebase === "undefined") {
-        alert("Firebase is not initialized. Please check Firebase CDN scripts.");
-        return;
-      }
-
-      try {
-        // Upload to Cloudinary
-        const formData = new FormData();
-        formData.append("file", file);
-        formData.append("upload_preset", "ontar_unsigned");
-
-        const cloudName = "dfshwrf62";
-
-        const response = await fetch(
-          `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
-
-        const data = await response.json();
-        const imageUrl = data.secure_url;
-
-        if (!response.ok || !imageUrl) {
-          throw new Error(data?.error?.message || "Cloudinary upload failed");
-        }
-
-        // Save to Firestore
-        await db.collection("contacts").add({
-          fullName,
-          phone,
-          email,
-          subject,
-          bloodGroup,
-          message,
-          imageUrl,
-          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        });
-
-        showPopup();
-        form.reset();
-
-        if (previewImage) {
-          previewImage.style.display = "none";
-        }
-
-      } catch (error) {
-        console.error(error);
-        alert("Something went wrong!");
-      }
+  if (phoneInput && window.intlTelInput) {
+    iti = window.intlTelInput(phoneInput, {
+      initialCountry: "auto",
+      geoIpLookup: function (callback) {
+        fetch("https://ipapi.co/json")
+          .then(res => res.json())
+          .then(data => callback(data.country_code))
+          .catch(() => callback("us"));
+      },
+      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/utils.js",
+      separateDialCode: true
     });
   }
 

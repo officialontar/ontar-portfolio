@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="google-site-verification" href="googled09790b93ca20719.html" />
     <link rel="icon" type="image/x-icon" href="Image/logo.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/css/intlTelInput.css">
+    <!-- ✅ reCAPTCHA SCRIPT ADDED -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
   <body>
     <canvas id="canvas1"></canvas>
@@ -893,14 +896,7 @@
         </p>
         <br>
 
-       <form 
-  id="contactForm"
-  name="contact"
-  method="POST"
-  data-netlify="true"
-  enctype="multipart/form-data"
-  class="contact-form"
->
+       <form id="contactForm" class="contact-form" enctype="multipart/form-data">
 
   <input type="hidden" name="form-name" value="contact" />
   <input type="hidden" name="bot-field" />
@@ -914,12 +910,20 @@
 
     <div class="form-group">
       <label for="phone">Mobile Number</label>
-      <input type="tel" name="phone" id="phone" placeholder="Enter your mobile number" required>
+      <!-- <input type="tel" name="phone" id="phone" placeholder="Enter your mobile number" required> -->
+       <input type="tel" id="phone" placeholder="Enter phone number" required>
+<small id="phoneError" style="color:#ff8f8f; font-weight:700; display:none; margin-top:6px;">
+  Please enter a valid phone number.
+</small>
     </div>
 
     <div class="form-group">
       <label for="email">Email Address</label>
-      <input type="email" name="email" id="email" placeholder="Enter your email address" required>
+      <!-- <input type="email" name="email" id="email" placeholder="Enter your email address" required> -->
+       <input type="email" id="email" placeholder="Enter your email address" required>
+<small id="emailError" style="color:#ff8f8f; font-weight:700; display:none; margin-top:6px;">
+  Please enter a valid email address.
+</small>
     </div>
 
     <div class="form-group">
@@ -957,7 +961,15 @@
 
   </div>
 
-  <div class="submit-wrap">
+    <div class="submit-wrap">
+
+    <!-- ✅ reCAPTCHA CHECKBOX ADDED -->
+    <div style="margin-bottom:15px;">
+      <div class="g-recaptcha" 
+           data-sitekey="6LehDXwsAAAAAFxh0icHYH-6opzsyl2ACybTWs08">
+      </div>
+    </div>
+
     <button type="submit" class="btn-submit">Submit</button>
   </div>
 </form>
@@ -994,6 +1006,8 @@
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/intlTelInput.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/utils.js"></script>
 
 <script>
   const firebaseConfig = {

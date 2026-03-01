@@ -1800,3 +1800,208 @@ body.light-mode .read-btn.project-read-btn:hover {
 #typing-name {
   word-break: break-word;
 }
+
+
+
+/* =========================================
+   CONTACT FINAL (CLEAN & PRODUCTION READY)
+========================================= */
+
+/* safety */
+#contact,
+.contact-section {
+  overflow-x: hidden;
+}
+
+.contact-grid {
+  width: 100%;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 30px;
+}
+
+.contact-left,
+.contact-right {
+  min-width: 0;
+}
+
+/* =========================================
+   CONTACT DETAILS ICON ALIGN FIX
+========================================= */
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row;      /* always side by side */
+}
+
+.detail-item i {
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.detail-item div {
+  flex: 1;
+  min-width: 0;
+}
+
+/* =========================================
+   SOCIAL GRID (DESKTOP)
+========================================= */
+
+.social-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.social-card {
+  width: auto;
+  padding: 6px 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+/* =========================================
+   MOVING TEXT
+========================================= */
+
+.moving-text {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  width: 100%;
+}
+
+.moving-text span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: moveText 12s linear infinite;
+}
+
+/* =========================================
+   TABLET & MOBILE
+========================================= */
+
+@media (max-width: 992px) {
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .contact-section .glass-container {
+    padding: 1.6rem;
+  }
+}
+
+/* =========================================
+   <= 480px
+========================================= */
+
+@media (max-width: 480px) {
+
+  .contact-section .glass-container {
+    padding: 1.2rem;
+  }
+
+  /* spacing before Contact Me */
+  .right-title {
+    margin-top: 25px;
+  }
+
+  .moving-text span {
+    animation-duration: 16s;
+  }
+
+  .left-title,
+  .right-title {
+    font-size: 22px;
+  }
+
+  /* keep icon alignment correct */
+  .detail-item {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* social center but clean */
+  .social-grid {
+    justify-content: center;
+  }
+
+  .social-card {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+
+/* =========================================
+   <= 360px (320px devices)
+========================================= */
+
+@media (max-width: 360px) {
+
+  .contact-section .glass-container {
+    padding: 1rem;
+  }
+
+  /* more spacing before Contact Me */
+  .right-title {
+    margin-top: 30px;
+  }
+
+  /* left aligned clean grid */
+  .social-grid {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .social-card {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  .detail-item {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+/* =========================================
+   HERO NAME OVERFLOW FIX
+========================================= */
+
+@media (max-width: 480px) {
+
+  .typing-wrapper {
+    white-space: normal;
+  }
+
+  .typing-text {
+    font-size: 1.9rem;
+    line-height: 1.25;
+    word-break: break-word;
+    max-width: 100%;
+  }
+}

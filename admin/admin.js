@@ -89,8 +89,41 @@ function closeModal(m){ m.classList.remove("open"); }
 function safe(v){ return (v ?? "").toString().trim(); }
 function lower(v){ return safe(v).toLowerCase(); }
 
+/* === FORMAT CREATED DATE === */
+function formatDate(timestamp){
+  if(!timestamp?.seconds) return "—";
+
+  const date = new Date(timestamp.seconds * 1000);
+
+  return date.toLocaleString("en-GB", {
+    day:"2-digit",
+    month:"short",
+    year:"numeric",
+    hour:"2-digit",
+    minute:"2-digit",
+    second:"2-digit",
+    hour12:true
+  });
+}
+
+function formatFullDate(timestamp){
+  if(!timestamp?.seconds) return "—";
+
+  const date = new Date(timestamp.seconds * 1000);
+
+  return date.toLocaleString("en-GB", {
+    day:"2-digit",
+    month:"long",   // 🔥 এখানে long
+    year:"numeric",
+    hour:"2-digit",
+    minute:"2-digit",
+    second:"2-digit",
+    hour12:true
+  });
+}
+
 function getCreatedSeconds(x){
-  // Firestore Timestamp => seconds
+
   if (x?.createdAt?.seconds) return x.createdAt.seconds;
   return 0;
 }
@@ -274,7 +307,7 @@ function render(){
       <td>${escapeHtml(n.name) || "—"}</td>
       <td>${escapeHtml(n.email) || "—"}</td>
       <td>${escapeHtml(n.phone) || "—"}</td>
-      <td>${escapeHtml(n.subject) || "—"}</td>
+      <td>${formatDate(item.createdAt)}</td>
       <td>${escapeHtml(n.blood) || "—"}</td>
       <td>
         <img class="thumb" id="img_${item.id}" style="display:none;" alt="img">
@@ -371,6 +404,7 @@ async function openView(id){
     ["Phone", n.phone || "—"],
     ["Subject", n.subject || "—"],
     ["Blood", n.blood || "—"],
+    ["Created Date", formatFullDate(item.createdAt)],
   ];
 
   viewGrid.innerHTML = rows.map(([k,v])=>`
