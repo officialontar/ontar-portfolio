@@ -131,13 +131,13 @@ function getCreatedSeconds(x){
 /* Universal field mapping (আপনার DB field নাম যাই থাকুক) */
 function normalize(item){
   const name = item.name || item.fullName || item.full_name || "";
+    const subject = item.subject || "";
   const phone = item.phone || item.mobile || item.mobileNumber || item.mobile_number || "";
   const email = item.email || "";
-  const subject = item.subject || "";
   const blood = item.blood || item.bloodGroup || item.blood_group || "";
   const message = item.message || item.msg || "";
   const imageRaw = item.image || item.imageUrl || item.profile_pic || item.file || item.fileUrl || item.photo || "";
-  return { name, phone, email, subject, blood, message, imageRaw };
+  return { name, subject, phone, email, blood, message, imageRaw };
 }
 
 /* ---- Image URL Resolver (http/https OR gs:// OR path) ---- */
@@ -400,9 +400,9 @@ async function openView(id){
 
   const rows = [
     ["Name", n.name || "—"],
+    ["Subject", n.subject || "—"],
     ["Email", n.email || "—"],
     ["Phone", n.phone || "—"],
-    ["Subject", n.subject || "—"],
     ["Blood", n.blood || "—"],
     ["Created Date", formatFullDate(item.createdAt)],
   ];
@@ -458,9 +458,9 @@ function openEdit(id){
   const n = normalize(item);
 
   editName.value = safe(n.name);
+  editSubject.value = safe(n.subject);
   editPhone.value = safe(n.phone);
   editEmail.value = safe(n.email);
-  editSubject.value = safe(n.subject);
   editBlood.value = safe(n.blood);
   editMessage.value = safe(n.message);
   editImage.value = safe(n.imageRaw);
@@ -482,9 +482,9 @@ editForm.addEventListener("submit", async (e)=>{
   // We save normalized standard keys (Best Practice)
   const payload = {
     name: safe(editName.value),
+    subject: safe(editSubject.value),
     phone: safe(editPhone.value),
     email: safe(editEmail.value),
-    subject: safe(editSubject.value),
     blood: safe(editBlood.value),
     message: safe(editMessage.value),
     image: safe(editImage.value),
@@ -544,7 +544,7 @@ exportBtn.addEventListener("click", ()=>{
   if(q){
     list = list.filter(item=>{
       const n = normalize(item);
-      const hay = `${lower(n.name)} ${lower(n.email)} ${lower(n.phone)} ${lower(n.blood)} ${lower(n.subject)}`;
+      const hay = `${lower(n.name)} ${lower(n.subject)} ${lower(n.email)} ${lower(n.phone)} ${lower(n.blood)}`;
       return hay.includes(q);
     });
   }
@@ -555,11 +555,11 @@ exportBtn.addEventListener("click", ()=>{
     });
   }
 
-  let csv = "Name,Email,Phone,Subject,Blood,Message,Image\n";
+  let csv = "Name,Subject,Email,Phone,Blood,Message,Image\n";
   for(const item of list){
     const n = normalize(item);
     const row = [
-      n.name, n.email, n.phone, n.subject, n.blood, n.message, n.imageRaw
+      n.name, n.subject, n.email, n.phone, n.blood, n.message, n.imageRaw
     ].map(v => `"${safe(v).replaceAll('"','""')}"`).join(",");
     csv += row + "\n";
   }

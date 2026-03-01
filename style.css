@@ -1262,7 +1262,13 @@ body.light-mode .read-btn.project-read-btn:hover {
 .c2 { color: var(--secondary); }
 .c3 { color: #ffb100; }
 
-.left-subtitle { margin-bottom: 18px; opacity: 0.85; }
+.left-subtitle {
+  margin-bottom: 18px;
+  opacity: 0.85;
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.7;
+}
 
 .left-heading {
   margin: 20px 0 12px;
@@ -1312,10 +1318,44 @@ body.light-mode .read-btn.project-read-btn:hover {
   gap: 14px;
 }
 
-.contact-form select,
-.contact-form input[type="file"],
-.contact-form textarea {
+.contact-form .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* default: 2 column */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* message full width */
+.form-group.full-width {
   grid-column: 1 / -1;
+}
+
+/* recaptcha full width */
+.recaptcha-wrap {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* make inputs beautiful */
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.3);
+  color: #00ffd5;
+  outline: none;
+  width: 100%;
 }
 
 .contact-form input,
@@ -1745,6 +1785,21 @@ body.light-mode .read-btn.project-read-btn:hover {
   }
 }
 
+@media (max-width: 768px) {
+
+  .contact-form .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full-width {
+    grid-column: auto;
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+}
+
 @media (max-width: 576px) {
 
   .glass-container {
@@ -2045,8 +2100,9 @@ body.light-mode .read-btn.project-read-btn:hover {
 .recaptcha-wrap {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 25px;
 }
 
 @media (max-width: 768px) {

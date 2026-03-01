@@ -298,46 +298,85 @@ document.addEventListener("DOMContentLoaded", function () {
      🔟 SUCCESS POPUP WITH TYPING
   ================================ */
 
+  // function showPopup() {
+  //   const popup = document.getElementById("successPopup");
+  //   const titleEl = document.getElementById("popupTitle");
+  //   const messageEl = document.getElementById("popupMessage");
+
+  //   if (!popup) return;
+
+  //   popup.classList.add("active");
+
+  //   const titleText = "🎉 Thank You!";
+  //   const messageText = "Your message has been successfully submitted. I will contact you very soon.";
+
+  //   titleEl.textContent = "";
+  //   messageEl.textContent = "";
+
+  //   let i = 0;
+  //   let j = 0;
+
+  //   function typeTitle() {
+  //     if (i < titleText.length) {
+  //       titleEl.textContent += titleText[i++];
+  //       setTimeout(typeTitle, 60);
+  //     } else {
+  //       setTimeout(typeMessage, 300);
+  //     }
+  //   }
+
+  //   function typeMessage() {
+  //     if (j < messageText.length) {
+  //       messageEl.textContent += messageText[j++];
+  //       setTimeout(typeMessage, 30);
+  //     }
+  //   }
+
+  //   typeTitle();
+  // }
+
+  // window.closePopup = function () {
+  //   document.getElementById("successPopup")?.classList.remove("active");
+  // };
+
+
   function showPopup() {
-    const popup = document.getElementById("successPopup");
-    const titleEl = document.getElementById("popupTitle");
-    const messageEl = document.getElementById("popupMessage");
+  const popup = document.getElementById("successPopup");
+  const titleEl = document.getElementById("popupTitle");
+  const messageEl = document.getElementById("popupMessage");
 
-    if (!popup) return;
+  if (!popup) return;
 
-    popup.classList.add("active");
+  popup.classList.add("active");
 
-    const titleText = "🎉 Thank You!";
-    const messageText = "Your message has been successfully submitted. I will contact you very soon.";
+  const titleText = "🎉 Thank You!";
+  const messageText =
+    "Your message has been successfully submitted. I will contact you very soon.";
 
-    titleEl.textContent = "";
-    messageEl.textContent = "";
+  titleEl.textContent = "";
+  messageEl.textContent = "";
 
-    let i = 0;
-    let j = 0;
+  let i = 0;
+  let j = 0;
 
-    function typeTitle() {
-      if (i < titleText.length) {
-        titleEl.textContent += titleText[i++];
-        setTimeout(typeTitle, 60);
-      } else {
-        setTimeout(typeMessage, 300);
-      }
+  function typeTitle() {
+    if (i < titleText.length) {
+      titleEl.textContent += titleText[i++];
+      setTimeout(typeTitle, 15);   // 🔥 ultra fast
+    } else {
+      setTimeout(typeMessage, 80); // small smooth gap
     }
-
-    function typeMessage() {
-      if (j < messageText.length) {
-        messageEl.textContent += messageText[j++];
-        setTimeout(typeMessage, 30);
-      }
-    }
-
-    typeTitle();
   }
 
-  window.closePopup = function () {
-    document.getElementById("successPopup")?.classList.remove("active");
-  };
+  function typeMessage() {
+    if (j < messageText.length) {
+      messageEl.textContent += messageText[j++];
+      setTimeout(typeMessage, 10);  // 🔥 very fast
+    }
+  }
+
+  typeTitle();
+}
 
  /* ===============================
    1️⃣1️⃣ Cloudinary + Firestore Submit
@@ -358,12 +397,12 @@ if (form) {
 
 
     const fullName = document.getElementById("full_name").value.trim();
+    const subject = document.getElementById("subject").value.trim();
     const phoneInput = document.getElementById("phone");
     const emailInput = document.getElementById("email");
 
     const phone = phoneInput.value.trim();
     const email = emailInput.value.trim();
-    const subject = document.getElementById("subject").value.trim();
     const bloodGroup = document.getElementById("blood_group").value;
     const message = document.getElementById("message").value.trim();
     const file = document.getElementById("attachment").files[0];
