@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const sectionId = current.getAttribute("id");
 
       const scrollLink = document.querySelector(
-        ".nav-menu a[href*=" + sectionId + "]",
+        '.nav-menu a[href*="' + sectionId + '"]'
       );
 
       if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function init() {
       particlesArray = [];
-      let numberOfParticles = (canvas.width * canvas.height) / 10000;
+      const numberOfParticles = (canvas.width * canvas.height) / 10000;
 
       for (let i = 0; i < numberOfParticles; i++) {
         particlesArray.push(new Particle());
@@ -202,6 +202,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     init();
     animate();
+
+    window.addEventListener("resize", function () {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      init();
+    });
   }
 
   /* ===============================
@@ -259,197 +265,212 @@ document.addEventListener("DOMContentLoaded", function () {
      9️⃣ Image Preview Before Upload
   ================================ */
 
-  const fileInput = document.getElementById("attachment");
+  const attachmentInput = document.getElementById("attachment");
   const previewImage = document.getElementById("previewImage");
 
-  if (fileInput && previewImage) {
-    fileInput.addEventListener("change", function () {
+  if (attachmentInput && previewImage) {
+    attachmentInput.addEventListener("change", function () {
       const file = this.files[0];
-      if (file && file.type.startsWith("image/")) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          previewImage.src = e.target.result;
-          previewImage.style.display = "block";
-        };
-        reader.readAsDataURL(file);
-      } else {
+
+      if (!file) {
+        previewImage.src = "";
         previewImage.style.display = "none";
+        return;
       }
+
+      // ✅ ADDED: 10MB file size limit check
+      // এই জায়গায় file select করার সময়ই size check হচ্ছে
+      const maxFileSize = 10 * 1024 * 1024; // 10MB
+
+      if (file.size > maxFileSize) {
+        alert("File size must be 10 MB or less.");
+        this.value = "";
+        previewImage.src = "";
+        previewImage.style.display = "none";
+        return;
+      }
+
+      if (!file.type.startsWith("image/")) {
+        previewImage.src = "";
+        previewImage.style.display = "none";
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        previewImage.src = e.target.result;
+        previewImage.style.display = "block";
+      };
+      reader.readAsDataURL(file);
     });
   }
 
   /* ===============================
-     🔟 SUCCESS POPUP WITH TYPING
-  ================================ */
-
-  // function showPopup() {
-  //   const popup = document.getElementById("successPopup");
-  //   const titleEl = document.getElementById("popupTitle");
-  //   const messageEl = document.getElementById("popupMessage");
-
-  //   if (!popup) return;
-
-  //   popup.classList.add("active");
-
-  //   const titleText = "🎉 Thank You!";
-  //   const messageText = "Your message has been successfully submitted. I will contact you very soon.";
-
-  //   titleEl.textContent = "";
-  //   messageEl.textContent = "";
-
-  //   let i = 0;
-  //   let j = 0;
-
-  //   function typeTitle() {
-  //     if (i < titleText.length) {
-  //       titleEl.textContent += titleText[i++];
-  //       setTimeout(typeTitle, 60);
-  //     } else {
-  //       setTimeout(typeMessage, 300);
-  //     }
-  //   }
-
-  //   function typeMessage() {
-  //     if (j < messageText.length) {
-  //       messageEl.textContent += messageText[j++];
-  //       setTimeout(typeMessage, 30);
-  //     }
-  //   }
-
-  //   typeTitle();
-  // }
-
-  // window.closePopup = function () {
-  //   document.getElementById("successPopup")?.classList.remove("active");
-  // };
-
-  function showPopup() {
-    const popup = document.getElementById("successPopup");
-    const titleEl = document.getElementById("popupTitle");
-    const messageEl = document.getElementById("popupMessage");
-
-    if (!popup) return;
-
-    popup.classList.add("active");
-
-    const titleText = "🎉 Thank You!";
-    const messageText =
-      "Your message has been successfully submitted. I will contact you very soon.";
-
-    titleEl.textContent = "";
-    messageEl.textContent = "";
-
-    let i = 0;
-    let j = 0;
-
-    function typeTitle() {
-      if (i < titleText.length) {
-        titleEl.textContent += titleText[i++];
-        setTimeout(typeTitle, 15); // 🔥 ultra fast
-      } else {
-        setTimeout(typeMessage, 80); // small smooth gap
-      }
-    }
-
-    function typeMessage() {
-      if (j < messageText.length) {
-        messageEl.textContent += messageText[j++];
-        setTimeout(typeMessage, 10); // 🔥 very fast
-      }
-    }
-
-    typeTitle();
-  }
-
-  window.closePopup = function () {
-    document.getElementById("successPopup")?.classList.remove("active");
-  };
-
-  /* ===============================
-   1️⃣1️⃣ Cloudinary + Firestore Submit
+   🔟 SUCCESS POPUP WITH SLIDE EFFECT
 ================================ */
 
+const successPopup = document.getElementById("successPopup");
+const popupTitle = document.getElementById("popupTitle");
+const popupMessage = document.getElementById("popupMessage");
+
+function showPopup() {
+  if (!successPopup || !popupTitle || !popupMessage) return;
+
+  const popupBox = successPopup.querySelector(".popup-box");
+  popupBox?.classList.remove("error-popup");
+  popupBox?.classList.add("success-popup");
+
+  successPopup.classList.add("active");
+
+  popupTitle.innerHTML = "🎉 Thank You!";
+  popupMessage.innerHTML =
+    "Your message has been submitted successfully. I will review your message and contact you very soon.";
+
+  // ✅ আগে animation class remove
+  popupTitle.classList.remove("popup-title-animate");
+  popupMessage.classList.remove("popup-message-animate");
+
+  // ✅ reflow trigger
+  void popupTitle.offsetWidth;
+  void popupMessage.offsetWidth;
+
+  // ✅ নতুন করে animation class add
+  popupTitle.classList.add("popup-title-animate");
+  popupMessage.classList.add("popup-message-animate");
+}
+
+window.closePopup = function () {
+  successPopup?.classList.remove("active");
+};
+
+if (successPopup) {
+  successPopup.addEventListener("click", function (e) {
+    if (e.target === successPopup) {
+      closePopup();
+    }
+  });
+}
+
+
+
+  /* ===============================
+     1️⃣1️⃣ Cloudinary + Firestore Submit
+  ================================ */
+
   const form = document.getElementById("contactForm");
+  const phoneInput = document.getElementById("phone");
+  const emailInput = document.getElementById("email");
+  const bloodGroupInput = document.getElementById("blood_group");
+  const messageInput = document.getElementById("message");
+  const fullNameInput = document.getElementById("full_name");
+  const subjectInput = document.getElementById("subject");
+
+  async function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
 
   if (form) {
     form.addEventListener("submit", async function (e) {
       e.preventDefault();
 
-      // ✅ reCAPTCHA validation
-      const recaptchaResponse = grecaptcha.getResponse();
-      if (!recaptchaResponse) {
-        alert("Please verify that you are not a robot.");
+      const isPhoneValid = validatePhone();
+      const isEmailValid = validateEmail();
+
+      if (!isPhoneValid || !isEmailValid) {
         return;
       }
 
-      const fullName = document.getElementById("full_name").value.trim();
-      const subject = document.getElementById("subject").value.trim();
-      const phoneInput = document.getElementById("phone");
-      const emailInput = document.getElementById("email");
+      const submitBtn = form.querySelector(".btn-submit");
+      const originalBtnText = submitBtn ? submitBtn.innerHTML : "";
 
-      const phone = phoneInput.value.trim();
-      const email = emailInput.value.trim();
-      const bloodGroup = document.getElementById("blood_group").value;
-      const message = document.getElementById("message").value.trim();
-      const file = document.getElementById("attachment").files[0];
-
-      const emailError = document.getElementById("emailError");
-      const phoneError = document.getElementById("phoneError");
-
-      // ✅ Email Validation
-      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-      if (!emailOk) {
-        if (emailError) emailError.style.display = "block";
-        alert("Please enter a valid email address.");
-        return;
-      } else {
-        if (emailError) emailError.style.display = "none";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "Submitting...";
       }
 
-      // ✅ Phone Validation (intl-tel-input required)
-      // ✅ Phone Validation
-      if (!iti || !iti.isValidNumber()) {
-        if (phoneError) phoneError.style.display = "block";
-        alert("Please enter a valid phone number.");
-        return;
-      } else {
-        if (phoneError) phoneError.style.display = "none";
-      }
+      // ✅ ADDED: reCAPTCHA submit-এর ঠিক আগে check
+      // এখানে reCAPTCHA missing বা expired হলে submit stop হবে
+      if (typeof grecaptcha !== "undefined") {
+        const recaptchaResponse = grecaptcha.getResponse();
 
-      const fullPhone = iti.getNumber(); // E.164 format
-
-      if (!file) {
-        alert("Please select a file.");
-        return;
+        if (!recaptchaResponse) {
+          alert("Please verify the reCAPTCHA checkbox again before submitting.");
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+          }
+          return;
+        }
       }
 
       if (typeof db === "undefined" || typeof firebase === "undefined") {
-        alert(
-          "Firebase is not initialized. Please check Firebase CDN scripts.",
-        );
+        alert("Firebase is not initialized. Please check Firebase CDN scripts.");
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
+        }
         return;
       }
 
       try {
-        const formData = new FormData();
-        formData.append("file", file);
-        formData.append("upload_preset", "ontar_unsigned");
+        const fullName = fullNameInput ? fullNameInput.value.trim() : "";
+        const subject = subjectInput ? subjectInput.value.trim() : "";
+        const email = emailInput ? emailInput.value.trim() : "";
+        const bloodGroup = bloodGroupInput ? bloodGroupInput.value : "";
+        const message = messageInput ? messageInput.value.trim() : "";
+        const file = attachmentInput ? attachmentInput.files[0] : null;
+        const fullPhone = iti ? iti.getNumber() : "";
+        const selectedCountry = iti ? iti.getSelectedCountryData() : null;
 
-        const cloudName = "dfshwrf62";
+        let imageUrl = "";
+        let attachmentData = null;
 
-        const response = await fetch(
-          `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
-          {
-            method: "POST",
-            body: formData,
-          },
-        );
+        // ✅ ADDED: submit-এর সময়ও 10MB file size limit check
+        // file manually change হলে বা bypass হলেও এখানে আবার check হবে
+        const maxFileSize = 10 * 1024 * 1024; // 10MB
 
-        const data = await response.json();
-        const imageUrl = data.secure_url;
+        if (file && file.size > maxFileSize) {
+          alert("File size must be 10 MB or less.");
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+          }
+          return;
+        }
 
-        if (!response.ok || !imageUrl) {
-          throw new Error(data?.error?.message || "Cloudinary upload failed");
+        if (file) {
+          const formData = new FormData();
+          formData.append("file", file);
+          formData.append("upload_preset", "ontar_unsigned");
+
+          const cloudName = "dfshwrf62";
+
+          const response = await fetch(
+            `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
+            {
+              method: "POST",
+              body: formData,
+            }
+          );
+
+          const data = await response.json();
+          imageUrl = data.secure_url || "";
+
+          if (!response.ok) {
+            throw new Error(data?.error?.message || "Cloudinary upload failed");
+          }
+
+          attachmentData = {
+            name: file.name,
+            type: file.type,
+            size: file.size,
+            data: await fileToBase64(file),
+          };
         }
 
         await db.collection("contacts").add({
@@ -460,18 +481,43 @@ document.addEventListener("DOMContentLoaded", function () {
           bloodGroup,
           message,
           imageUrl,
+          country_code: selectedCountry?.dialCode || "",
+          country_iso2: selectedCountry?.iso2 || "",
+          country_name: selectedCountry?.name || "",
+          attachment: attachmentData,
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         });
 
         showPopup();
         form.reset();
 
+        if (iti) {
+          iti.setCountry("bd");
+        }
+
+        if (typeof grecaptcha !== "undefined") {
+          grecaptcha.reset();
+        }
+
         if (previewImage) {
+          previewImage.src = "";
           previewImage.style.display = "none";
         }
+
+        clearError(phoneInput, phoneError);
+        clearError(emailInput, emailError);
       } catch (error) {
-        console.error(error);
-        alert("Something went wrong!");
+        console.error("Contact form submission error:", error);
+
+        // ✅ ADDED: error alert একটু clear করে দেওয়া হয়েছে
+        alert(
+          "Submission failed. Please check reCAPTCHA, internet connection, Cloudinary upload, and file size, then try again."
+        );
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
+        }
       }
     });
   }
@@ -480,8 +526,6 @@ document.addEventListener("DOMContentLoaded", function () {
      1️⃣2️⃣ Email + International Phone Validation
   ================================ */
 
-  const phoneInput = document.querySelector("#phone");
-  const emailInput = document.querySelector("#email");
   const phoneError = document.getElementById("phoneError");
   const emailError = document.getElementById("emailError");
 
@@ -489,16 +533,103 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (phoneInput && window.intlTelInput) {
     iti = window.intlTelInput(phoneInput, {
-      initialCountry: "auto",
-      geoIpLookup: function (callback) {
-        fetch("https://ipapi.co/json")
-          .then((res) => res.json())
-          .then((data) => callback(data.country_code))
-          .catch(() => callback("us"));
-      },
+      initialCountry: "bd",
+      preferredCountries: ["bd", "us", "in", "gb", "sa", "ae"],
+      separateDialCode: true,
+      autoPlaceholder: "polite",
+      formatOnDisplay: true,
+      nationalMode: false,
+      strictMode: true,
       utilsScript:
         "https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/utils.js",
-      separateDialCode: true,
+    });
+  }
+
+  function setError(input, errorEl, message) {
+    if (errorEl) {
+      errorEl.textContent = message;
+      errorEl.style.display = "block";
+    }
+    if (input) {
+      input.style.borderColor = "#ff6b6b";
+      input.style.boxShadow = "0 0 0 3px rgba(255, 107, 107, 0.10)";
+    }
+  }
+
+  function clearError(input, errorEl) {
+    if (errorEl) {
+      errorEl.style.display = "none";
+      errorEl.textContent = "";
+    }
+    if (input) {
+      input.style.borderColor = "";
+      input.style.boxShadow = "";
+    }
+  }
+
+  function validateEmail() {
+    if (!emailInput) return true;
+
+    const emailValue = emailInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+    if (!emailValue) {
+      setError(emailInput, emailError, "Email address is required.");
+      return false;
+    }
+
+    if (!emailRegex.test(emailValue)) {
+      setError(emailInput, emailError, "Please enter a valid email address.");
+      return false;
+    }
+
+    clearError(emailInput, emailError);
+    return true;
+  }
+
+  function validatePhone() {
+    if (!phoneInput || !iti) return true;
+
+    const rawValue = phoneInput.value.trim();
+
+    if (!rawValue) {
+      setError(
+        phoneInput,
+        phoneError,
+        "Phone number is required for the selected country."
+      );
+      return false;
+    }
+
+    if (!iti.isValidNumber()) {
+      const countryData = iti.getSelectedCountryData();
+      const countryName = countryData?.name || "the selected country";
+      setError(
+        phoneInput,
+        phoneError,
+        `Please enter a valid phone number for ${countryName}.`
+      );
+      return false;
+    }
+
+    clearError(phoneInput, phoneError);
+    return true;
+  }
+
+  if (emailInput) {
+    emailInput.addEventListener("input", validateEmail);
+    emailInput.addEventListener("blur", validateEmail);
+  }
+
+  if (phoneInput) {
+    phoneInput.addEventListener("input", validatePhone);
+    phoneInput.addEventListener("blur", validatePhone);
+    phoneInput.addEventListener("countrychange", function () {
+      if (phoneInput.value.trim()) {
+        validatePhone();
+      } else {
+        clearError(phoneInput, phoneError);
+      }
     });
   }
 });

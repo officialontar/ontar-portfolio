@@ -1019,18 +1019,18 @@
                     type="text"
                     name="subject"
                     id="subject"
-                    placeholder="Enter subject"
+                    placeholder="Enter your subject"
                     required
                   />
                 </div>
 
                 <div class="form-group">
                   <label for="phone">Mobile Number</label>
-                  <!-- <input type="tel" name="phone" id="phone" placeholder="Enter your mobile number" required> -->
                   <input
                     type="tel"
+                    name="phone"
                     id="phone"
-                    placeholder="Enter phone number"
+                    placeholder="Enter your valid phone number"
                     required
                   />
                   <small
@@ -1042,17 +1042,17 @@
                       margin-top: 6px;
                     "
                   >
-                    Please enter a valid phone number.
+                    Please enter a valid phone number for the selected country code.
                   </small>
                 </div>
 
                 <div class="form-group">
                   <label for="email">Email Address</label>
-                  <!-- <input type="email" name="email" id="email" placeholder="Enter your email address" required> -->
                   <input
                     type="email"
+                    name="email"
                     id="email"
-                    placeholder="Enter your email address"
+                    placeholder="Enter your valid email address"
                     required
                   />
                   <small
@@ -1092,16 +1092,9 @@
                     accept="image/*,application/pdf"
                     required
                   />
-                  <div class="image-preview">
-                    <img
-                      id="previewImage"
-                      style="
-                        display: none;
-                        width: 120px;
-                        border-radius: 10px;
-                        margin-top: 10px;
-                      "
-                    />
+
+                  <div class="mini-preview-wrap">
+                    <img id="previewImage" alt="Preview Image" />
                   </div>
                 </div>
 
@@ -1117,7 +1110,6 @@
                 </div>
               </div>
 
-              <!-- ✅ reCAPTCHA CHECKBOX ADDED -->
               <div class="form-group full-width recaptcha-wrap">
                 <div
                   class="g-recaptcha"
